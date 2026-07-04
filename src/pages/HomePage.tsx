@@ -9,6 +9,7 @@ import {
 'lucide-react';
 import { PageTransition } from '../components/PageTransition';
 import { PHONE_E164 } from '../config/contact';
+import { RESERVATION_URL } from '../config/servv';
 const fadeInUp = {
   hidden: {
     opacity: 0,
@@ -80,12 +81,14 @@ export function HomePage() {
                 variants={fadeInUp}
                 className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8">
                 
-                <Link
-                  to="/reservations"
+                <a
+                  href={RESERVATION_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full sm:w-auto px-8 py-4 bg-kiqao-gold text-kiqao-black font-medium tracking-wider hover:bg-kiqao-champagne transition-colors rounded-sm text-center">
-                  
+
                   Reserve a Table
-                </Link>
+                </a>
                 <Link
                   to="/menu"
                   className="w-full sm:w-auto px-8 py-4 border border-kiqao-gold text-kiqao-gold font-medium tracking-wider hover:bg-kiqao-gold/10 transition-colors rounded-sm text-center">
@@ -618,12 +621,14 @@ export function HomePage() {
               variants={fadeInUp}
               className="flex flex-col sm:flex-row justify-center gap-6">
               
-              <Link
-                to="/reservations"
+              <a
+                href={RESERVATION_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-8 py-4 bg-kiqao-gold text-kiqao-black font-medium tracking-wider hover:bg-kiqao-champagne transition-colors rounded-sm">
-                
+
                 Book a Table
-              </Link>
+              </a>
               <a
                 href={`tel:${PHONE_E164}`}
                 className="px-8 py-4 border border-kiqao-gold text-kiqao-gold font-medium tracking-wider hover:bg-kiqao-gold/10 transition-colors rounded-sm">

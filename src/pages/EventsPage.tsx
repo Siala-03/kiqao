@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { CalendarIcon, ClockIcon, UsersIcon } from 'lucide-react';
 import { PageTransition } from '../components/PageTransition';
 import { Link } from 'react-router-dom';
+import { RESERVATION_URL } from '../config/servv';
 const upcomingEvents = [
 {
   title: 'Wine Tasting Evening',
@@ -149,12 +150,14 @@ export function EventsPage() {
                   {event.desc}
                 </p>
 
-                <Link
-                to="/reservations"
+                <a
+                href={RESERVATION_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-auto w-full py-3 border border-kiqao-gold text-kiqao-gold text-center uppercase tracking-wider text-sm font-medium hover:bg-kiqao-gold hover:text-kiqao-black transition-colors rounded-sm">
-                
+
                   Reserve Spot
-                </Link>
+                </a>
               </motion.div>
             )}
           </div>

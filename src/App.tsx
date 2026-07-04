@@ -10,8 +10,6 @@ import { ScrollToTop } from './components/ScrollToTop';
 import { HomePage } from './pages/HomePage';
 import { MenuPage } from './pages/MenuPage';
 import { EventsPage } from './pages/EventsPage';
-import { ReservationsPage } from './pages/ReservationsPage';
-import { OrderPage } from './pages/OrderPage';
 import { ContactPage } from './pages/ContactPage';
 export function App() {
   return (
@@ -26,8 +24,6 @@ export function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/menu" element={<MenuPage />} />
             <Route path="/events" element={<EventsPage />} />
-            <Route path="/reservations" element={<ReservationsPage />} />
-            <Route path="/order" element={<OrderPage />} />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </AnimatePresence>

@@ -2,7 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MenuIcon, XIcon } from 'lucide-react';
-const navLinks = [
+import { RESERVATION_URL, ORDER_URL } from '../config/servv';
+const navLinks: {
+  name: string;
+  path?: string;
+  href?: string;
+}[] = [
 {
   name: 'Home',
   path: '/'
@@ -17,11 +22,11 @@ const navLinks = [
 },
 {
   name: 'Reservations',
-  path: '/reservations'
+  href: RESERVATION_URL
 },
 {
   name: 'Order Online',
-  path: '/order'
+  href: ORDER_URL
 },
 {
   name: 'Contact',
@@ -62,20 +67,33 @@ export function Navbar() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) =>
+            link.href ?
+            <a
+              key={link.name}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm tracking-wide transition-colors hover:text-kiqao-gold text-kiqao-cream">
+
+                {link.name}
+              </a> :
+
             <Link
               key={link.name}
-              to={link.path}
+              to={link.path!}
               className={`text-sm tracking-wide transition-colors hover:text-kiqao-gold ${location.pathname === link.path ? 'text-kiqao-gold font-medium' : 'text-kiqao-cream'}`}>
-              
+
                 {link.name}
               </Link>
             )}
-            <Link
-              to="/reservations"
+            <a
+              href={RESERVATION_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-6 py-2.5 bg-kiqao-gold text-kiqao-black text-sm font-medium tracking-wide hover:bg-kiqao-champagne transition-colors rounded-sm">
-              
+
               Book a Table
-            </Link>
+            </a>
           </nav>
 
           {/* Mobile Menu Toggle */}
@@ -116,21 +134,34 @@ export function Navbar() {
           
             <div className="flex flex-col px-6 py-8 space-y-6">
               {navLinks.map((link) =>
+            link.href ?
+            <a
+              key={link.name}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-lg tracking-wide transition-colors text-kiqao-cream">
+
+                  {link.name}
+                </a> :
+
             <Link
               key={link.name}
-              to={link.path}
+              to={link.path!}
               className={`text-lg tracking-wide transition-colors ${location.pathname === link.path ? 'text-kiqao-gold' : 'text-kiqao-cream'}`}>
-              
+
                   {link.name}
                 </Link>
             )}
               <div className="pt-6 border-t border-kiqao-charcoal">
-                <Link
-                to="/reservations"
+                <a
+                href={RESERVATION_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block w-full text-center px-6 py-3 bg-kiqao-gold text-kiqao-black font-medium tracking-wide hover:bg-kiqao-champagne transition-colors rounded-sm">
-                
+
                   Book a Table
-                </Link>
+                </a>
               </div>
             </div>
           </motion.div>

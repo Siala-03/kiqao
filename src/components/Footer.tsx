@@ -7,6 +7,7 @@ import {
   SendIcon } from
 'lucide-react';
 import { PHONE_DISPLAY, EMAIL } from '../config/contact';
+import { RESERVATION_URL, ORDER_URL } from '../config/servv';
 export function Footer() {
   return (
     <footer className="bg-kiqao-black border-t border-kiqao-gold/20 pt-20 pb-10">
@@ -58,19 +59,45 @@ export function Footer() {
             </h4>
             <ul className="space-y-4">
               {[
-              'Menu',
-              'Events',
-              'Reservations',
-              'Order Online',
-              'Contact'].
+              {
+                name: 'Menu',
+                path: '/menu'
+              },
+              {
+                name: 'Events',
+                path: '/events'
+              },
+              {
+                name: 'Reservations',
+                href: RESERVATION_URL
+              },
+              {
+                name: 'Order Online',
+                href: ORDER_URL
+              },
+              {
+                name: 'Contact',
+                path: '/contact'
+              }].
               map((item) =>
-              <li key={item}>
-                  <Link
-                  to={`/${item.toLowerCase().replace(' ', '')}`}
+              <li key={item.name}>
+                  {item.href ?
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-kiqao-cream/70 hover:text-kiqao-gold transition-colors text-sm">
-                  
-                    {item}
-                  </Link>
+
+                      {item.name}
+                    </a> :
+
+                <Link
+                  to={item.path!}
+                  className="text-kiqao-cream/70 hover:text-kiqao-gold transition-colors text-sm">
+
+                      {item.name}
+                    </Link>
+                }
                 </li>
               )}
             </ul>
