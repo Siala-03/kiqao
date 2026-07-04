@@ -241,22 +241,22 @@ export function HomePage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
               {[
               {
-                name: 'Filet Mignon',
-                desc: 'Perfectly seared with truffle jus and seasonal vegetables',
-                price: 'RWF 60,000',
-                img: 'https://images.unsplash.com/photo-1706650616334-97875fae8521?w=800&auto=format&fit=crop'
+                name: 'Kiqao Signature Breakfast',
+                desc: 'Our house specialty to start the day right',
+                price: 'RWF 13,000',
+                img: 'https://images.unsplash.com/photo-1465014925804-7b9ede58d0d7?w=800&auto=format&fit=crop'
               },
               {
-                name: 'Grilled Chicken',
-                desc: 'With herbs and roasted vegetables',
-                price: 'RWF 40,000',
-                img: 'https://images.unsplash.com/photo-1592011432621-f7f576f44484?w=800&auto=format&fit=crop'
+                name: 'Kiqao Signature Club Sandwich',
+                desc: 'Layered and stacked the Kiqao way',
+                price: 'RWF 12,500',
+                img: 'https://images.unsplash.com/photo-1553909489-cd47e0907980?w=800&auto=format&fit=crop'
               },
               {
-                name: 'Mushroom Risotto',
-                desc: 'Creamy arborio rice with wild mushrooms',
-                price: 'RWF 30,000',
-                img: 'https://images.unsplash.com/photo-1637361874063-e5e415d7bcf7?w=800&auto=format&fit=crop'
+                name: 'Kiqao Signature Chicken Pasta',
+                desc: 'Our take on a classic, made in-house',
+                price: 'RWF 12,000',
+                img: 'https://images.unsplash.com/photo-1612152328178-4a6c83d96429?w=800&auto=format&fit=crop'
               }].
               map((dish, i) =>
               <motion.div

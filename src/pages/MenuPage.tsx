@@ -2,197 +2,334 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PageTransition } from '../components/PageTransition';
 import { usePageTitle } from '../hooks/usePageTitle';
-type MenuCategory = 'Starters' | 'Mains' | 'Liquor' | 'Desserts' | 'Wine List';
-const menuData = {
-  Starters: [
+type MenuCategory =
+'Breakfast' |
+'Starters & Burgers' |
+'Main Course' |
+'Pasta, Pizza & Salads' |
+'Desserts & Sides' |
+'Coffee, Juice & Mocktails' |
+'Cocktails, Wine & Bar';
+const menuData: Record<MenuCategory, {
+  name: string;
+  desc?: string;
+  price: string;
+}[]> = {
+  Breakfast: [
   {
-    name: 'Truffle Burrata',
-    desc: 'Heirloom tomatoes, aged balsamic, basil oil',
-    price: 'RWF 28,800',
-    tags: ['V', 'GF']
+    name: 'Kiqao Signature Breakfast',
+    price: 'RWF 13,000'
   },
   {
-    name: 'Tuna Tartare',
-    desc: 'Avocado, ponzu, sesame, taro chips',
-    price: 'RWF 33,600',
-    tags: ['GF']
+    name: 'Omelette',
+    desc: 'Spanish, Denver, Fajita, Spinach & Mushroom',
+    price: 'RWF 7,000'
   },
   {
-    name: 'French Onion Soup',
-    desc: 'Gruyère crouton, rich beef broth',
-    price: 'RWF 21,600',
-    tags: []
+    name: 'Stuffed Crepes with Chocolate',
+    price: 'RWF 9,000'
   },
   {
-    name: 'Beef Carpaccio',
-    desc: 'Parmesan shavings, arugula, truffle oil',
-    price: 'RWF 31,200',
-    tags: ['GF']
+    name: 'Coconut Cream / Buttermilk Pancake',
+    price: 'RWF 8,000'
   },
   {
-    name: 'Lobster Bisque',
-    desc: 'Cognac cream, chives, brioche',
-    price: 'RWF 26,400',
-    tags: []
+    name: 'Chicken Salad Croissant',
+    price: 'RWF 10,000'
   },
   {
-    name: 'Caesar Salad',
-    desc: 'Romaine hearts, anchovy dressing, parmesan crisp',
-    price: 'RWF 19,200',
-    tags: []
+    name: 'Chicken Wrap / Beef Wrap',
+    price: 'RWF 11,000'
+  },
+  {
+    name: 'Seasonal Fruit Plate',
+    price: 'RWF 7,500'
   }],
 
-  Mains: [
+  'Starters & Burgers': [
   {
-    name: 'Wagyu Tenderloin',
-    desc: 'Truffle potato purée, seasonal greens, red wine jus',
-    price: 'RWF 102,000',
-    tags: ['GF']
+    name: 'Chili Garlic Chicken Wings',
+    price: 'RWF 8,000'
   },
   {
-    name: 'Rack of Lamb',
-    desc: 'Herb crusted, ratatouille, rosemary reduction',
-    price: 'RWF 93,600',
-    tags: []
+    name: 'Garlic Bread with Cheese',
+    price: 'RWF 3,500'
   },
   {
-    name: 'Duck Confit',
-    desc: 'Puy lentils, pancetta, cherry gastrique',
-    price: 'RWF 78,000',
-    tags: ['GF']
+    name: 'Golden Fried Mozzarella Sticks',
+    price: 'RWF 5,000'
   },
   {
-    name: 'Filet Mignon',
-    desc: '8oz center cut, asparagus, béarnaise',
-    price: 'RWF 110,400',
-    tags: ['GF']
+    name: 'Double Cheese Jalapeno Burger',
+    price: 'RWF 11,000'
   },
   {
-    name: 'Chicken Supreme',
-    desc: 'Wild mushroom risotto, thyme jus',
-    price: 'RWF 66,000',
-    tags: ['GF']
+    name: 'The Meatball Masterpiece',
+    price: 'RWF 12,000'
   },
   {
-    name: 'Osso Buco',
-    desc: 'Braised veal shank, saffron gremolata',
-    price: 'RWF 86,400',
-    tags: []
+    name: 'Kiqao Signature Club Sandwich',
+    price: 'RWF 12,500'
+  },
+  {
+    name: 'Veggie Burger',
+    price: 'RWF 7,500'
   }],
 
-  Liquor: [
+  'Main Course': [
   {
-    name: 'Grey Goose Vodka',
-    desc: 'French premium vodka, 40% ABV, 1L',
-    price: 'RWF 285,000',
-    tags: []
+    name: 'Fish Fillet with Creamy Creole Sauce',
+    price: 'RWF 18,000'
   },
   {
-    name: 'Hennessy XO',
-    desc: 'Extra old cognac, 40% ABV, 70cl',
-    price: 'RWF 680,000',
-    tags: []
+    name: 'Pan Seared Tilapia',
+    price: 'RWF 15,000'
   },
   {
-    name: 'Johnnie Walker Blue',
-    desc: 'Blended Scotch whisky, 40% ABV, 75cl',
-    price: 'RWF 420,000',
-    tags: []
+    name: 'Creamy Chicken Marsala',
+    price: 'RWF 18,000'
   },
   {
-    name: 'Moët & Chandon Impérial',
-    desc: 'Champagne, 12% ABV, 75cl',
-    price: 'RWF 195,000',
-    tags: []
+    name: 'Pinwheels Steak with Mozzarella',
+    price: 'RWF 18,000'
   },
   {
-    name: 'Remy Martin Louis XIII',
-    desc: 'Ultra-premium cognac, 40% ABV, 70cl',
-    price: 'RWF 850,000',
-    tags: []
+    name: 'Alfredo Chicken Wings',
+    price: 'RWF 10,000'
+  },
+  {
+    name: 'Grilled Sirloin Steak',
+    price: 'RWF 20,000'
+  },
+  {
+    name: 'Lip Smacking Beef Parmigiana',
+    price: 'RWF 20,000'
+  },
+  {
+    name: 'T-Bone Steak with Chimi Churi Sauce',
+    price: 'RWF 20,000'
+  },
+  {
+    name: 'Huntsman Platter',
+    price: 'RWF 25,000'
   }],
 
-  Desserts: [
+  'Pasta, Pizza & Salads': [
   {
-    name: 'Crème Brûlée',
-    desc: 'Madagascar vanilla bean, fresh berries',
-    price: 'RWF 21,600',
-    tags: ['V', 'GF']
+    name: 'Penne Alforno',
+    price: 'RWF 13,000'
   },
   {
-    name: 'Chocolate Fondant',
-    desc: 'Molten center, salted caramel ice cream',
-    price: 'RWF 26,400',
-    tags: ['V']
+    name: 'Kiqao Signature Chicken Pasta',
+    price: 'RWF 12,000'
   },
   {
-    name: 'Tiramisu',
-    desc: 'Espresso soaked ladyfingers, mascarpone',
-    price: 'RWF 24,000',
-    tags: ['V']
+    name: 'Mushroom Tagliatelle',
+    price: 'RWF 12,000'
   },
   {
-    name: 'Cheese Board',
-    desc: 'Selection of artisanal cheeses, honeycomb, crackers',
-    price: 'RWF 33,600',
-    tags: ['V']
+    name: 'Ginovesse Pasta',
+    price: 'RWF 12,000'
   },
   {
-    name: 'Panna Cotta',
-    desc: 'Passion fruit coulis, coconut tuile',
-    price: 'RWF 21,600',
-    tags: ['V', 'GF']
+    name: 'Tuscan Chicken Pasta',
+    price: 'RWF 12,000'
+  },
+  {
+    name: 'Margarita Pizza',
+    price: 'RWF 8,000'
+  },
+  {
+    name: 'Spicy Pepperoni Pizza',
+    price: 'RWF 12,000'
+  },
+  {
+    name: 'Rainbow Vegetable Pizza',
+    price: 'RWF 9,000'
+  },
+  {
+    name: 'Bolognaise Pizza',
+    price: 'RWF 12,000'
+  },
+  {
+    name: 'Chicken Hawaiian Pizza',
+    price: 'RWF 12,000'
+  },
+  {
+    name: 'Chicken BBQ Pizza',
+    price: 'RWF 12,000'
+  },
+  {
+    name: 'Ham and Mushroom Pizza',
+    price: 'RWF 12,000'
+  },
+  {
+    name: 'Tuna and Mushroom Pizza',
+    price: 'RWF 11,000'
+  },
+  {
+    name: 'Nyama Feast Pizza',
+    price: 'RWF 13,000'
+  },
+  {
+    name: 'Mushroom and Olive Loaded Pizza',
+    price: 'RWF 10,000'
+  },
+  {
+    name: 'Cowboy Caviar Salad',
+    price: 'RWF 13,000'
+  },
+  {
+    name: 'Mango Lime Peanut & Chicken Salad',
+    price: 'RWF 12,000'
+  },
+  {
+    name: 'Greek Salad',
+    price: 'RWF 10,000'
+  },
+  {
+    name: 'Chicken Caesar Salad',
+    price: 'RWF 12,000'
   }],
 
-  'Wine List': [
+  'Desserts & Sides': [
   {
-    name: 'Château Margaux 2015',
-    desc: 'Bordeaux Blend, France',
-    price: 'RWF 384,000',
-    tags: []
+    name: 'Tropical Fruit Salad with Yoghurt & Nuts',
+    price: 'RWF 7,500'
   },
   {
-    name: 'Opus One 2018',
-    desc: 'Cabernet Sauvignon, Napa Valley',
-    price: 'RWF 540,000',
-    tags: []
+    name: 'Cinnamon French Toast with Whipping Cream',
+    price: 'RWF 9,000'
   },
   {
-    name: 'Dom Pérignon 2012',
-    desc: 'Champagne, France',
-    price: 'RWF 456,000',
-    tags: []
+    name: 'Potatoes',
+    desc: 'Mashed, Fries, Chunky Chips, Sautee, Wedges',
+    price: 'RWF 4,000'
   },
   {
-    name: 'Cloudy Bay Sauvignon',
-    desc: 'Marlborough, New Zealand',
-    price: 'RWF 78,000',
-    tags: []
+    name: 'Plantain',
+    price: 'RWF 4,000'
   },
   {
-    name: 'Whispering Angel Rosé',
-    desc: 'Côtes de Provence, France',
-    price: 'RWF 66,000',
-    tags: []
+    name: 'Rice',
+    price: 'RWF 3,500'
   },
   {
-    name: 'Barolo Riserva 2016',
-    desc: 'Piedmont, Italy',
-    price: 'RWF 216,000',
-    tags: []
+    name: 'Loaded Fries',
+    price: 'RWF 8,000'
+  },
+  {
+    name: 'Pickled Vegetable',
+    price: 'RWF 3,500'
+  },
+  {
+    name: 'Onion Rings',
+    price: 'RWF 3,500'
+  },
+  {
+    name: 'Creamed Spinach',
+    price: 'RWF 3,500'
+  }],
+
+  'Coffee, Juice & Mocktails': [
+  {
+    name: 'Cappuccino',
+    price: 'RWF 4,000'
+  },
+  {
+    name: 'Café Latte',
+    price: 'RWF 4,000'
+  },
+  {
+    name: 'Mocha',
+    price: 'RWF 4,000'
+  },
+  {
+    name: 'Macchiato',
+    price: 'RWF 3,000'
+  },
+  {
+    name: 'Espresso',
+    price: 'RWF 3,000'
+  },
+  {
+    name: 'Spiced Tea / African Tea / Herbal Tea',
+    price: 'RWF 4,000'
+  },
+  {
+    name: 'Fresh Juices',
+    desc: 'Mango, Passion, Pineapple, Watermelon',
+    price: 'RWF 5,000'
+  },
+  {
+    name: 'Cocktail Juice',
+    price: 'RWF 6,000'
+  },
+  {
+    name: 'Smoothies',
+    price: 'RWF 6,000'
+  },
+  {
+    name: 'Mocktails',
+    price: 'RWF 10,000'
+  }],
+
+  'Cocktails, Wine & Bar': [
+  {
+    name: 'Signature Cocktails',
+    price: 'from RWF 15,000'
+  },
+  {
+    name: 'Long Island / Old Fashion / Amalfi Collins',
+    price: 'RWF 18,000'
+  },
+  {
+    name: 'Red Wine by the Glass',
+    price: 'from RWF 12,000'
+  },
+  {
+    name: 'White Wine by the Glass',
+    price: 'from RWF 12,000'
+  },
+  {
+    name: 'Sparkling Wine by the Glass',
+    price: 'from RWF 15,000'
+  },
+  {
+    name: 'Champagne Bottles',
+    price: 'from RWF 250,000'
+  },
+  {
+    name: 'Vodka, Gin, Tequila, Whisky, Rum & Cognac',
+    desc: 'Available by shot and bottle',
+    price: ''
+  },
+  {
+    name: 'Sodas & Water',
+    price: 'from RWF 2,000'
+  },
+  {
+    name: 'Local Beer',
+    price: 'RWF 3,000'
+  },
+  {
+    name: 'Premium Beer & Energy Drinks',
+    price: 'from RWF 4,000'
   }]
 
 };
 const categories: MenuCategory[] = [
-'Starters',
-'Mains',
-'Liquor',
-'Desserts',
-'Wine List'];
+'Breakfast',
+'Starters & Burgers',
+'Main Course',
+'Pasta, Pizza & Salads',
+'Desserts & Sides',
+'Coffee, Juice & Mocktails',
+'Cocktails, Wine & Bar'];
 
 export function MenuPage() {
   usePageTitle('Menu | Kiqao Lounge');
-  const [activeCategory, setActiveCategory] = useState<MenuCategory>('Starters');
+  const [activeCategory, setActiveCategory] = useState<MenuCategory>('Breakfast');
   return (
     <PageTransition>
       <main className="flex-grow bg-kiqao-black text-kiqao-cream min-h-screen">
@@ -203,7 +340,7 @@ export function MenuPage() {
               src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920"
               alt="Menu hero"
               className="w-full h-full object-cover" />
-            
+
             <div className="absolute inset-0 bg-kiqao-black/70 backdrop-blur-sm"></div>
           </div>
           <div className="relative z-10 text-center px-4 mt-16">
@@ -217,7 +354,7 @@ export function MenuPage() {
                 y: 0
               }}
               className="font-display text-5xl md:text-6xl text-kiqao-warm-white mb-4">
-              
+
               Our Menu
             </motion.h1>
             <motion.p
@@ -233,7 +370,7 @@ export function MenuPage() {
                 delay: 0.2
               }}
               className="text-kiqao-gold tracking-widest uppercase text-sm">
-              
+
               A culinary journey crafted with passion
             </motion.p>
           </div>
@@ -248,7 +385,7 @@ export function MenuPage() {
               key={cat}
               onClick={() => setActiveCategory(cat)}
               className={`text-sm md:text-base tracking-widest uppercase transition-colors relative pb-2 ${activeCategory === cat ? 'text-kiqao-gold' : 'text-kiqao-cream/60 hover:text-kiqao-warm-white'}`}>
-              
+
                 {cat}
                 {activeCategory === cat &&
               <motion.div
@@ -281,46 +418,32 @@ export function MenuPage() {
                   duration: 0.4
                 }}
                 className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
-                
+
                 {menuData[activeCategory].map((item, idx) =>
                 <div key={idx} className="flex flex-col">
                     <div className="flex justify-between items-baseline mb-2">
-                      <h3 className="font-display text-xl text-kiqao-warm-white flex items-center gap-3">
+                      <h3 className="font-display text-xl text-kiqao-warm-white">
                         {item.name}
-                        {item.tags.length > 0 &&
-                      <span className="flex gap-1">
-                            {item.tags.map((tag) =>
-                        <span
-                          key={tag}
-                          className="text-[10px] border border-kiqao-gold/50 text-kiqao-gold px-1 rounded-sm">
-                          
-                                {tag}
-                              </span>
-                        )}
-                          </span>
-                      }
                       </h3>
                       <div className="flex-grow border-b border-dotted border-kiqao-charcoal mx-4 relative top-[-6px]"></div>
-                      <span className="font-display text-xl text-kiqao-gold">
+                      <span className="font-display text-xl text-kiqao-gold whitespace-nowrap">
                         {item.price}
                       </span>
                     </div>
-                    <p className="text-kiqao-cream/60 text-sm font-light leading-relaxed">
-                      {item.desc}
-                    </p>
+                    {item.desc &&
+                  <p className="text-kiqao-cream/60 text-sm font-light leading-relaxed">
+                        {item.desc}
+                      </p>
+                  }
                   </div>
                 )}
               </motion.div>
             </AnimatePresence>
           </div>
 
-          {/* Dietary Legend */}
+          {/* Notice */}
           <div className="mt-24 text-center border-t border-kiqao-charcoal pt-8">
-            <p className="text-kiqao-cream/50 text-xs tracking-widest uppercase flex justify-center gap-6">
-              <span>V = Vegetarian</span>
-              <span>GF = Gluten Free</span>
-            </p>
-            <p className="text-kiqao-cream/40 text-xs mt-4 max-w-2xl mx-auto">
+            <p className="text-kiqao-cream/40 text-xs max-w-2xl mx-auto">
               Please inform your server of any allergies or dietary
               requirements. A discretionary 12.5% service charge will be added
               to your bill.
