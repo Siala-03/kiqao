@@ -46,11 +46,12 @@ export function HomePage() {
           <div className="absolute inset-0 z-0">
             <video
               src="/kiqaovideo.mp4"
-              poster="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920"
+              poster="/kiqao-interior.png"
               autoPlay
               loop
               muted
               playsInline
+              preload="auto"
               className="w-full h-full object-cover object-center" />
 
             <div className="absolute inset-0 bg-gradient-to-b from-kiqao-black/80 via-kiqao-black/60 to-kiqao-black/90"></div>
