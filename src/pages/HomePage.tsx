@@ -8,6 +8,7 @@ import {
   ChevronDownIcon } from
 'lucide-react';
 import { PageTransition } from '../components/PageTransition';
+import { PHONE_E164 } from '../config/contact';
 const fadeInUp = {
   hidden: {
     opacity: 0,
@@ -40,11 +41,15 @@ export function HomePage() {
         {/* SECTION A: HERO */}
         <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 z-0">
-            <img
-              src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920"
-              alt="Fine dining atmosphere"
+            <video
+              src="/kiqaovideo.mp4"
+              poster="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920"
+              autoPlay
+              loop
+              muted
+              playsInline
               className="w-full h-full object-cover object-center" />
-            
+
             <div className="absolute inset-0 bg-gradient-to-b from-kiqao-black/80 via-kiqao-black/60 to-kiqao-black/90"></div>
           </div>
 
@@ -233,19 +238,19 @@ export function HomePage() {
                 name: 'Filet Mignon',
                 desc: 'Perfectly seared with truffle jus and seasonal vegetables',
                 price: 'RWF 60,000',
-                img: 'https://lh3.googleusercontent.com/gps-cs-s/AHVAweoNINUKALKnq468ViFeiZucYpAE8KjAmcRKNqvgfJjKFf5Wk_X6k8KFZNfD2fJ72ePmn-E4WDMEU41GK89D_JrRLn0l2lXjdLfxkeUk7hNFu3kymyaU66Cgf55T4RWmT-XEmvQpBA=w243-h406-n-k-no-nu'
+                img: 'https://images.unsplash.com/photo-1706650616334-97875fae8521?w=800&auto=format&fit=crop'
               },
               {
                 name: 'Grilled Chicken',
                 desc: 'With herbs and roasted vegetables',
                 price: 'RWF 40,000',
-                img: 'https://lh3.googleusercontent.com/gps-cs-s/AHVAweq61k1h1hlohu7nNEBfnkiD6XuIIdf7T_5HftSChXj5uFM747zTgR4HJJR9cWqB4CTHfE3r8k5jrx2eg2SmmQmQ0KMsotKhL02PFbxEo3E7l4KcEERf3FitW5yOtmhv1LVTU_YP=w243-h406-n-k-no-nu'
+                img: 'https://images.unsplash.com/photo-1592011432621-f7f576f44484?w=800&auto=format&fit=crop'
               },
               {
                 name: 'Mushroom Risotto',
                 desc: 'Creamy arborio rice with wild mushrooms',
                 price: 'RWF 30,000',
-                img: 'https://lh3.googleusercontent.com/gps-cs-s/AHVAweodshvNWigwxSsTSWM_oR1H5ZBwLihJ7jv0NtU3BFA7NIH4T-XxyNGMQ_gtYkcACHj0Mcd9O8znoilg_OVAYToNzDhB4-IpUP4jZhDFr_NdodoXccE292655bcDQ04uQvYotrQFER-DF_Cd=w243-h174-n-k-no-nu'
+                img: 'https://images.unsplash.com/photo-1637361874063-e5e415d7bcf7?w=800&auto=format&fit=crop'
               }].
               map((dish, i) =>
               <motion.div
@@ -620,9 +625,9 @@ export function HomePage() {
                 Book a Table
               </Link>
               <a
-                href="tel:+250785023984"
+                href={`tel:${PHONE_E164}`}
                 className="px-8 py-4 border border-kiqao-gold text-kiqao-gold font-medium tracking-wider hover:bg-kiqao-gold/10 transition-colors rounded-sm">
-                
+
                 Call Us
               </a>
             </motion.div>

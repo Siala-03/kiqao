@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { CheckIcon, PhoneIcon, MessageCircleIcon } from 'lucide-react';
+import { CheckIcon, PhoneIcon } from 'lucide-react';
 import { PageTransition } from '../components/PageTransition';
+import { WhatsAppIcon } from '../components/icons/WhatsAppIcon';
+import { PHONE_DISPLAY, PHONE_E164, WHATSAPP_NUMBER, EMAIL } from '../config/contact';
+// Access key from web3forms.com for the infokiqaolounge@gmail.com account.
+// Set VITE_WEB3FORMS_ACCESS_KEY in .env once the client shares it — see .env.example.
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as
+string | undefined;
 export function ReservationsPage() {
   const [formData, setFormData] = useState({
     name: '',
@@ -15,6 +21,7 @@ export function ReservationsPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
   const handleChange = (
   e: React.ChangeEvent<
     HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
@@ -25,14 +32,36 @@ export function ReservationsPage() {
       [e.target.name]: e.target.value
     });
   };
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Mock API call
-    setTimeout(() => {
+    setIsError(false);
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `New Reservation Request from ${formData.name}`,
+          from_name: 'Kiqao Lounge Reservations',
+          to_email: EMAIL,
+          ...formData
+        })
+      });
+      const result = await response.json();
+      if (result.success) {
+        setIsSuccess(true);
+      } else {
+        setIsError(true);
+      }
+    } catch {
+      setIsError(true);
+    } finally {
       setIsSubmitting(false);
-      setIsSuccess(true);
-    }, 1500);
+    }
   };
   // Generate time slots
   const timeSlots = [];
@@ -93,12 +122,12 @@ export function ReservationsPage() {
                     Reservation Confirmed
                   </h2>
                   <p className="text-kiqao-cream/80 mb-6">
-                    Thank you, {formData.name}. Your table for{' '}
+                    Thank you, {formData.name}. Your request for a table for{' '}
                     {formData.partySize} on {formData.date} at {formData.time}{' '}
-                    has been reserved.
+                    has been sent to our team.
                   </p>
                   <p className="text-kiqao-cream/60 text-sm mb-8">
-                    A confirmation email has been sent to {formData.email}.
+                    We'll confirm with you shortly by phone or email.
                   </p>
                   <button
                   onClick={() => {
@@ -273,6 +302,13 @@ export function ReservationsPage() {
                   </textarea>
                   </div>
 
+                  {isError &&
+                <p className="text-red-400 text-sm mb-6">
+                      Something went wrong sending your request. Please call
+                      or WhatsApp us directly using the details on the right.
+                    </p>
+                }
+
                   <button
                   type="submit"
                   disabled={isSubmitting}
@@ -342,19 +378,19 @@ export function ReservationsPage() {
                 </h4>
                 <div className="flex flex-col gap-4">
                   <a
-                    href="tel:+250785023984"
+                    href={`tel:${PHONE_E164}`}
                     className="flex items-center justify-center text-kiqao-cream hover:text-kiqao-gold transition-colors">
-                    
+
                     <PhoneIcon className="w-4 h-4 mr-2" />
-                    +254 700 123 456
+                    {PHONE_DISPLAY}
                   </a>
                   <a
-                    href="https://wa.me/250785023984"
+                    href={`https://wa.me/${WHATSAPP_NUMBER}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center text-green-400 hover:text-green-300 transition-colors">
-                    
-                    <MessageCircleIcon className="w-4 h-4 mr-2" />
+
+                    <WhatsAppIcon className="w-4 h-4 mr-2" />
                     Prefer WhatsApp? Book directly
                   </a>
                 </div>

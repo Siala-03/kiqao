@@ -5,11 +5,12 @@ import {
   PhoneIcon,
   MailIcon,
   ClockIcon,
-  MessageCircleIcon,
   ChevronDownIcon,
   ChevronUpIcon } from
 'lucide-react';
 import { PageTransition } from '../components/PageTransition';
+import { WhatsAppIcon } from '../components/icons/WhatsAppIcon';
+import { PHONE_DISPLAY, WHATSAPP_NUMBER, EMAIL } from '../config/contact';
 const faqs = [
 {
   q: 'Do you accommodate dietary restrictions?',
@@ -243,7 +244,7 @@ export function ContactPage() {
                       <h4 className="text-kiqao-warm-white font-medium mb-1">
                         Phone
                       </h4>
-                      <p className="text-kiqao-cream/70">+250 785 023 984</p>
+                      <p className="text-kiqao-cream/70">{PHONE_DISPLAY}</p>
                     </div>
                   </div>
                   <div className="flex items-start">
@@ -253,7 +254,7 @@ export function ContactPage() {
                         Email
                       </h4>
                       <p className="text-kiqao-cream/70">
-                        info@kiqaolounge.com
+                        {EMAIL}
                       </p>
                     </div>
                   </div>
@@ -291,12 +292,12 @@ export function ContactPage() {
               </a>
 
               <a
-                href="https://wa.me/250785023984"
+                href={`https://wa.me/${WHATSAPP_NUMBER}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-full py-4 bg-[#25D366] text-white font-medium tracking-wider hover:bg-[#128C7E] transition-colors rounded-sm uppercase">
-                
-                <MessageCircleIcon className="w-5 h-5 mr-2" />
+
+                <WhatsAppIcon className="w-5 h-5 mr-2" />
                 Chat on WhatsApp
               </a>
             </motion.div>

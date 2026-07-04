@@ -6,6 +6,7 @@ import {
   TwitterIcon,
   SendIcon } from
 'lucide-react';
+import { PHONE_DISPLAY, EMAIL } from '../config/contact';
 export function Footer() {
   return (
     <footer className="bg-kiqao-black border-t border-kiqao-gold/20 pt-20 pb-10">
@@ -95,8 +96,8 @@ export function Footer() {
             </h4>
             <ul className="space-y-4 text-sm text-kiqao-cream/70 mb-8">
               <li>Nyarutarama KG 274 St, Kigali, Rwanda</li>
-              <li>+250 785 023 984</li>
-              <li>info@kiqaolounge.com</li>
+              <li>{PHONE_DISPLAY}</li>
+              <li>{EMAIL}</li>
             </ul>
             <form className="flex" onSubmit={(e) => e.preventDefault()}>
               <input
