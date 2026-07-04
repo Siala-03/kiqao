@@ -445,8 +445,7 @@ export function MenuPage() {
           <div className="mt-24 text-center border-t border-kiqao-charcoal pt-8">
             <p className="text-kiqao-cream/40 text-xs max-w-2xl mx-auto">
               Please inform your server of any allergies or dietary
-              requirements. A discretionary 12.5% service charge will be added
-              to your bill.
+              requirements.
             </p>
           </div>
         </section>
