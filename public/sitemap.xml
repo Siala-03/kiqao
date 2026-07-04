@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- TODO: update the domain below once the real production domain is live -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://kiqaolounge.com/</loc>
+    <loc>https://kiqao.rw/</loc>
   </url>
   <url>
-    <loc>https://kiqaolounge.com/menu</loc>
+    <loc>https://kiqao.rw/menu</loc>
   </url>
   <url>
-    <loc>https://kiqaolounge.com/events</loc>
+    <loc>https://kiqao.rw/events</loc>
   </url>
   <url>
-    <loc>https://kiqaolounge.com/contact</loc>
+    <loc>https://kiqao.rw/contact</loc>
   </url>
 </urlset>
