@@ -11,6 +11,7 @@ import {
 import { PageTransition } from '../components/PageTransition';
 import { WhatsAppIcon } from '../components/icons/WhatsAppIcon';
 import { PHONE_DISPLAY, WHATSAPP_NUMBER, EMAIL } from '../config/contact';
+import { usePageTitle } from '../hooks/usePageTitle';
 const faqs = [
 {
   q: 'Do you accommodate dietary restrictions?',
@@ -26,6 +27,7 @@ const faqs = [
 }];
 
 export function ContactPage() {
+  usePageTitle('Contact | Kiqao Lounge');
   const [formData, setFormData] = useState({
     name: '',
     email: '',

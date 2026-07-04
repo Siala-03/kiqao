@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO: update to the real production domain once it's live
+Sitemap: https://kiqaolounge.com/sitemap.xml

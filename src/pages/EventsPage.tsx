@@ -4,6 +4,7 @@ import { CalendarIcon, ClockIcon, UsersIcon } from 'lucide-react';
 import { PageTransition } from '../components/PageTransition';
 import { Link } from 'react-router-dom';
 import { RESERVATION_URL } from '../config/servv';
+import { usePageTitle } from '../hooks/usePageTitle';
 const upcomingEvents = [
 {
   title: 'Wine Tasting Evening',
@@ -47,6 +48,7 @@ const pastEventsImages = [
 'https://lh3.googleusercontent.com/gps-cs-s/AHVAwerhovdT9IAiPP7PEqLdvQSGBwp9OFzjMSGb3uwUFx94w20rytpxquf_RpKz6DKerlexPO8anOr-w9RftMzvrRd4QfZ6JbuYKnQRdfaRkKXxu6K4WOnqCSiwWB2j4knwu1Wvw02-yZcCfy_l=w141-h176-n-k-no-nu'];
 
 export function EventsPage() {
+  usePageTitle('Events | Kiqao Lounge');
   return (
     <PageTransition>
       <main className="flex-grow bg-kiqao-black text-kiqao-cream">

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PageTransition } from '../components/PageTransition';
+import { usePageTitle } from '../hooks/usePageTitle';
 type MenuCategory = 'Starters' | 'Mains' | 'Liquor' | 'Desserts' | 'Wine List';
 const menuData = {
   Starters: [
@@ -190,6 +191,7 @@ const categories: MenuCategory[] = [
 'Wine List'];
 
 export function MenuPage() {
+  usePageTitle('Menu | Kiqao Lounge');
   const [activeCategory, setActiveCategory] = useState<MenuCategory>('Starters');
   return (
     <PageTransition>

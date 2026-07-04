@@ -10,6 +10,7 @@ import {
 import { PageTransition } from '../components/PageTransition';
 import { PHONE_E164 } from '../config/contact';
 import { RESERVATION_URL } from '../config/servv';
+import { usePageTitle } from '../hooks/usePageTitle';
 const fadeInUp = {
   hidden: {
     opacity: 0,
@@ -36,6 +37,7 @@ const staggerContainer = {
   }
 };
 export function HomePage() {
+  usePageTitle('Kiqao Lounge | Fine Dining & Wine in Kigali');
   return (
     <PageTransition>
       <main className="flex-grow bg-kiqao-black text-kiqao-cream">
