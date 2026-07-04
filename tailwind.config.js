@@ -8,15 +8,15 @@ export default {
     extend: {
       colors: {
         kiqao: {
-          black: '#0A0A0A',
-          'rich-black': '#1A1A1A',
-          charcoal: '#2A2A2A',
-          gold: '#C9A96E',
-          champagne: '#D4AF37',
-          burgundy: '#722F37',
-          merlot: '#7B3F4E',
-          cream: '#F5F0E8',
-          'warm-white': '#FAF7F2',
+          black: '#181e1e',
+          'rich-black': '#282e2e',
+          charcoal: '#383e3e',
+          gold: '#c9a0a0',
+          champagne: '#d9b4b0',
+          burgundy: '#6a1010',
+          merlot: '#4a0d0d',
+          cream: '#f2ead6',
+          'warm-white': '#fff7e2',
         },
       },
       fontFamily: {
