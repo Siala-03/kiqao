@@ -134,8 +134,8 @@ export function HomePage() {
               
               <div className="aspect-[4/5] overflow-hidden rounded-sm">
                 <img
-                  src="https://lh3.googleusercontent.com/p/AF1QipMWv67TxTSzvXCFQ_MV0YLumwkxlRJTODN8Rmhq=s680-w680-h510-rw"
-                  alt="Restaurant interior"
+                  src="/kiqao-interior.png"
+                  alt="Kiqao Lounge interior"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" />
                 
               </div>

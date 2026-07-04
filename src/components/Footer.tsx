@@ -15,16 +15,12 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand Column */}
           <div className="space-y-6">
-            <Link
-              to="/"
-              className="flex flex-col items-start group inline-block">
-              
-              <span className="font-display text-3xl tracking-widest text-kiqao-warm-white">
-                KIQAO
-              </span>
-              <span className="text-[0.65rem] tracking-[0.3em] text-kiqao-gold mt-1">
-                LOUNGE
-              </span>
+            <Link to="/" className="inline-block group">
+              <img
+                src="/kiqao-logo.jpg"
+                alt="Kiqao Lounge"
+                className="h-14 w-auto rounded-sm" />
+
             </Link>
             <p className="text-kiqao-cream/70 text-sm leading-relaxed">
               Experience the art of fine dining and curated wines in an

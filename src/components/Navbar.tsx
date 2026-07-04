@@ -55,13 +55,12 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex flex-col items-center group">
-            <span className="font-display text-2xl md:text-3xl tracking-widest text-kiqao-warm-white group-hover:text-kiqao-gold transition-colors">
-              KIQAO
-            </span>
-            <span className="text-[0.65rem] tracking-[0.3em] text-kiqao-gold mt-1">
-              LOUNGE
-            </span>
+          <Link to="/" className="flex items-center group">
+            <img
+              src="/kiqao-logo.jpg"
+              alt="Kiqao Lounge"
+              className="h-12 w-auto rounded-sm" />
+
           </Link>
 
           {/* Desktop Navigation */}
