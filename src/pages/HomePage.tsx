@@ -44,14 +44,9 @@ export function HomePage() {
         {/* SECTION A: HERO */}
         <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 z-0">
-            <video
-              src="/kiqaovideo.mp4"
-              poster="/done_4.webp"
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="auto"
+            <img
+              src="/done_4.webp"
+              alt="Kiqao Lounge"
               className="w-full h-full object-cover object-center" />
 
             <div className="absolute inset-0 bg-gradient-to-b from-kiqao-black/80 via-kiqao-black/60 to-kiqao-black/90"></div>
