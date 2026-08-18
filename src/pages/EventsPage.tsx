@@ -56,7 +56,7 @@ export function EventsPage() {
         <section className="relative h-[40vh] min-h-[400px] flex items-center justify-center">
           <div className="absolute inset-0 z-0">
             <img
-              src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=1920"
+              src="/done_6.JPG"
               alt="Events hero"
               className="w-full h-full object-cover" />
             

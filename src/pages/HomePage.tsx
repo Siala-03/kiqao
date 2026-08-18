@@ -46,7 +46,7 @@ export function HomePage() {
           <div className="absolute inset-0 z-0">
             <video
               src="/kiqaovideo.mp4"
-              poster="/kiqao-interior.png"
+              poster="/done_4.JPG"
               autoPlay
               loop
               muted
@@ -137,7 +137,7 @@ export function HomePage() {
               
               <div className="aspect-[4/5] overflow-hidden rounded-sm">
                 <img
-                  src="/kiqao-interior.png"
+                  src="/done_1.JPG"
                   alt="Kiqao Lounge interior"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" />
                 
@@ -244,19 +244,19 @@ export function HomePage() {
                 name: 'Kiqao Signature Breakfast',
                 desc: 'Our house specialty to start the day right',
                 price: 'RWF 13,000',
-                img: 'https://images.unsplash.com/photo-1465014925804-7b9ede58d0d7?w=800&auto=format&fit=crop'
+                img: '/DSC_8433.jpg'
               },
               {
                 name: 'Kiqao Signature Club Sandwich',
                 desc: 'Layered and stacked the Kiqao way',
                 price: 'RWF 12,500',
-                img: 'https://images.unsplash.com/photo-1553909489-cd47e0907980?w=800&auto=format&fit=crop'
+                img: '/kiqao-club-sandwich.jpeg'
               },
               {
                 name: 'Kiqao Signature Chicken Pasta',
                 desc: 'Our take on a classic, made in-house',
                 price: 'RWF 12,000',
-                img: 'https://images.unsplash.com/photo-1612152328178-4a6c83d96429?w=800&auto=format&fit=crop'
+                img: '/kiqao-chicken-pasta.jpeg'
               }].
               map((dish, i) =>
               <motion.div
@@ -314,7 +314,7 @@ export function HomePage() {
         <section className="relative py-24 md:py-32 overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img
-              src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=1920"
+              src="/done_7.JPG"
               alt="Wine cellar"
               className="w-full h-full object-cover" />
             
@@ -591,7 +591,7 @@ export function HomePage() {
         <section className="relative py-32 flex items-center justify-center text-center px-4">
           <div className="absolute inset-0 z-0">
             <img
-              src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweokl7nkQ43kBf1czeS3F-dVHANVdR-lYhtGYuyuSw3STogPTMYtOy0wysNNxaREyGlBSUJh2jqKkMwFaNtoDEg22XMHOo63xyQcOPkuw4dwdxgZSlfCxm9qIlO9YyY5DqOtu7SwBl_h_uzC=s680-w680-h510-rw"
+              src="/done_5.JPG"
               alt="Elegant restaurant"
               className="w-full h-full object-cover" />
             

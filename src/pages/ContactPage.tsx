@@ -59,7 +59,7 @@ export function ContactPage() {
         <section className="relative h-[40vh] min-h-[400px] flex items-center justify-center">
           <div className="absolute inset-0 z-0">
             <img
-              src="/kiqao-entrance.png"
+              src="/DSC_8478.JPG"
               alt="Kiqao Lounge entrance"
               className="w-full h-full object-cover" />
             
