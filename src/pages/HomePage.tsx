@@ -46,7 +46,7 @@ export function HomePage() {
           <div className="absolute inset-0 z-0">
             <video
               src="/kiqaovideo.mp4"
-              poster="/done_4.JPG"
+              poster="/done_4.webp"
               autoPlay
               loop
               muted
@@ -137,7 +137,7 @@ export function HomePage() {
               
               <div className="aspect-[4/5] overflow-hidden rounded-sm">
                 <img
-                  src="/done_1.JPG"
+                  src="/done_1.webp"
                   alt="Kiqao Lounge interior"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" />
                 
@@ -244,19 +244,19 @@ export function HomePage() {
                 name: 'Kiqao Signature Breakfast',
                 desc: 'Our house specialty to start the day right',
                 price: 'RWF 13,000',
-                img: '/DSC_8433.jpg'
+                img: '/DSC_8433.webp'
               },
               {
                 name: 'Kiqao Signature Club Sandwich',
                 desc: 'Layered and stacked the Kiqao way',
                 price: 'RWF 12,500',
-                img: '/kiqao-club-sandwich.jpeg'
+                img: '/kiqao-club-sandwich.webp'
               },
               {
                 name: 'Kiqao Signature Chicken Pasta',
                 desc: 'Our take on a classic, made in-house',
                 price: 'RWF 12,000',
-                img: '/kiqao-chicken-pasta.jpeg'
+                img: '/kiqao-chicken-pasta.webp'
               }].
               map((dish, i) =>
               <motion.div
@@ -314,7 +314,7 @@ export function HomePage() {
         <section className="relative py-24 md:py-32 overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img
-              src="/done_7.JPG"
+              src="/done_7.webp"
               alt="Wine cellar"
               className="w-full h-full object-cover" />
             
@@ -591,7 +591,7 @@ export function HomePage() {
         <section className="relative py-32 flex items-center justify-center text-center px-4">
           <div className="absolute inset-0 z-0">
             <img
-              src="/done_5.JPG"
+              src="/done_5.webp"
               alt="Elegant restaurant"
               className="w-full h-full object-cover" />
             

@@ -17,7 +17,7 @@ export function Footer() {
           <div className="space-y-6">
             <Link to="/" className="inline-block group">
               <img
-                src="/kiqao-logo.jpg"
+                src="/kiqao-logo.webp"
                 alt="Kiqao Lounge"
                 className="h-14 w-auto rounded-sm" />
 

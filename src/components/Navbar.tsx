@@ -57,7 +57,7 @@ export function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex items-center group">
             <img
-              src="/kiqao-logo.jpg"
+              src="/kiqao-logo.webp"
               alt="Kiqao Lounge"
               className="h-12 w-auto rounded-sm" />
 
