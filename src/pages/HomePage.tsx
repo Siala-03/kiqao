@@ -5,7 +5,8 @@ import {
   WineIcon,
   StarIcon,
   ArrowRightIcon,
-  ChevronDownIcon } from
+  ChevronDownIcon,
+  InstagramIcon } from
 'lucide-react';
 import { PageTransition } from '../components/PageTransition';
 import { PHONE_E164 } from '../config/contact';
@@ -317,6 +318,35 @@ export function HomePage() {
           </div>
         </section>
 
+        {/* SECTION C.5: CINEMATIC BREAK */}
+        <section className="relative h-[60vh] min-h-[420px] overflow-hidden flex items-center justify-center">
+          <img
+            src="/done_3.webp"
+            alt="Kiqao Lounge rooftop at dusk"
+            className="absolute inset-0 w-full h-full object-cover object-center" />
+          <div className="absolute inset-0 bg-kiqao-black/50"></div>
+          <motion.p
+            initial={{
+              opacity: 0,
+              y: 20
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0
+            }}
+            viewport={{
+              once: true
+            }}
+            transition={{
+              duration: 0.8
+            }}
+            className="relative z-10 font-display italic text-2xl md:text-4xl text-kiqao-warm-white text-center max-w-3xl px-6 leading-relaxed">
+
+            "Every detail, from the pour to the plate, is crafted to be
+            remembered."
+          </motion.p>
+        </section>
+
         {/* SECTION D: WINE COLLECTION */}
         <section className="relative py-24 md:py-32 overflow-hidden">
           <div className="absolute inset-0 z-0">
@@ -417,6 +447,100 @@ export function HomePage() {
             </div>
           </div>
         </section>
+
+        {/* SECTION D.5: GALLERY / MOMENTS */}
+        <section className="py-24 md:py-32 bg-kiqao-rich-black px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{
+                once: true
+              }}
+              variants={fadeInUp}
+              className="text-center mb-16">
+
+              <span className="text-kiqao-gold text-sm font-bold tracking-[0.2em] uppercase">
+                Moments at Kiqao
+              </span>
+              <h2 className="font-display text-4xl md:text-5xl text-kiqao-warm-white mt-4">
+                A Glimpse Inside
+              </h2>
+              <div className="w-16 h-0.5 bg-kiqao-gold mx-auto mt-8"></div>
+            </motion.div>
+
+            <div className="grid grid-cols-4 grid-rows-2 gap-2 h-[500px] md:h-[600px]">
+              {[
+              {
+                src: '/DSC_8450.webp',
+                alt: 'Signature plated dish',
+                className: 'col-span-4 row-span-2 sm:col-span-2 sm:row-span-2'
+              },
+              {
+                src: '/DSC_8494.webp',
+                alt: 'Bar and lounge ambiance',
+                className: 'col-span-2 row-span-1 sm:col-span-1'
+              },
+              {
+                src: '/kiqao-coffee.webp',
+                alt: 'Latte art at Kiqao',
+                className: 'col-span-2 row-span-1 sm:col-span-1'
+              },
+              {
+                src: '/done_7.webp',
+                alt: 'Wine from our cellar',
+                className: 'col-span-2 row-span-1 sm:col-span-1'
+              },
+              {
+                src: '/DSC_8478.webp',
+                alt: 'Kiqao Lounge entrance',
+                className: 'col-span-2 row-span-1 sm:col-span-1'
+              }].
+              map((img, i) =>
+              <motion.div
+                key={i}
+                initial={{
+                  opacity: 0,
+                  scale: 0.95
+                }}
+                whileInView={{
+                  opacity: 1,
+                  scale: 1
+                }}
+                viewport={{
+                  once: true
+                }}
+                transition={{
+                  delay: i * 0.1,
+                  duration: 0.5
+                }}
+                className={`relative overflow-hidden group rounded-sm ${img.className}`}>
+
+                  <img
+                  src={img.src}
+                  alt={img.alt}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+
+                  <div className="absolute inset-0 bg-kiqao-black/0 group-hover:bg-kiqao-black/40 transition-colors duration-500"></div>
+                </motion.div>
+              )}
+            </div>
+
+            <div className="text-center mt-12">
+              <a
+                href="https://www.instagram.com/kiqaolounge.rw/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-kiqao-gold hover:text-kiqao-champagne transition-colors group tracking-wide uppercase text-sm font-medium">
+
+                <InstagramIcon className="w-4 h-4 mr-2" />
+                Follow @kiqaolounge.rw
+                <ArrowRightIcon className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* SECTION E: EVENTS PREVIEW */}
         <section className="py-24 md:py-32 bg-kiqao-black px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
