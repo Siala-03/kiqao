@@ -337,7 +337,7 @@ export function MenuPage() {
         <section className="relative h-[40vh] min-h-[400px] flex items-center justify-center">
           <div className="absolute inset-0 z-0">
             <img
-              src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920"
+              src="/DSC_8450.webp"
               alt="Menu hero"
               className="w-full h-full object-cover" />
 
@@ -376,8 +376,74 @@ export function MenuPage() {
           </div>
         </section>
 
+        {/* Chef's Highlights */}
+        <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="text-kiqao-gold text-sm font-bold tracking-[0.2em] uppercase">
+              Fan Favorites
+            </span>
+            <h2 className="font-display text-3xl md:text-4xl text-kiqao-warm-white mt-4">
+              Chef's Highlights
+            </h2>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+            {[
+            {
+              name: 'Signature Breakfast',
+              img: '/DSC_8433.webp'
+            },
+            {
+              name: 'Club Sandwich',
+              img: '/kiqao-club-sandwich.webp'
+            },
+            {
+              name: 'Chicken Pasta',
+              img: '/kiqao-chicken-pasta.webp'
+            },
+            {
+              name: 'Beef Parmigiana',
+              img: '/DSC_8450.webp'
+            },
+            {
+              name: 'Wine & Bar',
+              img: '/done_7.webp'
+            }].
+            map((item, i) =>
+            <motion.div
+              key={i}
+              initial={{
+                opacity: 0,
+                y: 20
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0
+              }}
+              viewport={{
+                once: true
+              }}
+              transition={{
+                delay: i * 0.1,
+                duration: 0.5
+              }}
+              className="relative aspect-[3/4] overflow-hidden rounded-sm group">
+
+                <img
+                src={item.img}
+                alt={item.name}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-kiqao-black/90 via-kiqao-black/10 to-transparent"></div>
+                <span className="absolute bottom-3 left-3 right-3 text-kiqao-warm-white font-display text-sm md:text-base">
+                  {item.name}
+                </span>
+              </motion.div>
+            )}
+          </div>
+        </section>
+
         {/* Menu Content */}
-        <section className="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-8 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Category Tabs */}
           <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-16 border-b border-kiqao-charcoal pb-6">
             {categories.map((cat) =>

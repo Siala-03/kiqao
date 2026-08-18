@@ -12,7 +12,8 @@ const upcomingEvents = [
   time: '7:00 PM',
   price: 'RWF 30,000',
   desc: 'Journey through rare Bordeaux vintages guided by our head sommelier.',
-  capacity: 'Limited to 30 guests'
+  capacity: 'Limited to 30 guests',
+  img: '/done_7.webp'
 },
 {
   title: 'Jazz & Dine Night',
@@ -20,7 +21,8 @@ const upcomingEvents = [
   time: '7:30 PM',
   price: 'RWF 45,000',
   desc: 'Live jazz trio with a curated 5-course tasting menu.',
-  capacity: 'Open seating'
+  capacity: 'Open seating',
+  img: '/done_1.webp'
 },
 {
   title: "Chef's Table Experience",
@@ -28,7 +30,8 @@ const upcomingEvents = [
   time: '8:00 PM',
   price: 'RWF 65,000',
   desc: 'Intimate 8-course journey with Chef Marcus at the kitchen counter.',
-  capacity: 'Only 12 seats'
+  capacity: 'Only 12 seats',
+  img: '/DSC_8450.webp'
 },
 {
   title: 'Spring Wine Gala',
@@ -36,7 +39,8 @@ const upcomingEvents = [
   time: '6:00 PM',
   price: 'RWF 80,000',
   desc: 'Celebrate spring with new additions to our wine collection.',
-  capacity: 'Limited to 50 guests'
+  capacity: 'Limited to 50 guests',
+  img: '/DSC_8494.webp'
 }];
 
 const pastEventsImages = [
@@ -122,8 +126,16 @@ export function EventsPage() {
               transition={{
                 delay: idx * 0.1
               }}
-              className="bg-kiqao-charcoal border border-kiqao-charcoal hover:border-kiqao-gold/30 transition-colors p-8 rounded-sm flex flex-col h-full">
-              
+              className="bg-kiqao-charcoal border border-kiqao-charcoal hover:border-kiqao-gold/30 transition-colors rounded-sm flex flex-col h-full overflow-hidden group">
+
+                <div className="h-48 overflow-hidden">
+                  <img
+                    src={event.img}
+                    alt={event.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                </div>
+
+                <div className="p-8 flex flex-col flex-grow">
                 <div className="flex justify-between items-start mb-6">
                   <h3 className="font-display text-2xl text-kiqao-warm-white">
                     {event.title}
@@ -160,6 +172,7 @@ export function EventsPage() {
 
                   Reserve Spot
                 </a>
+                </div>
               </motion.div>
             )}
           </div>
