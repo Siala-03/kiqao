@@ -43,10 +43,22 @@ export function HomePage() {
       <main className="flex-grow bg-kiqao-black text-kiqao-cream">
         {/* SECTION A: HERO */}
         <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 z-0 grid grid-cols-2 grid-rows-2 gap-1">
             <img
               src="/done_4.webp"
-              alt="Kiqao Lounge"
+              alt="Kiqao Lounge venue"
+              className="w-full h-full object-cover object-center" />
+            <img
+              src="/done_1.webp"
+              alt="Kiqao Lounge interior"
+              className="w-full h-full object-cover object-center" />
+            <img
+              src="/DSC_8433.webp"
+              alt="Kiqao signature dish"
+              className="w-full h-full object-cover object-center" />
+            <img
+              src="/done_5.webp"
+              alt="Kiqao Lounge table setting"
               className="w-full h-full object-cover object-center" />
 
             <div className="absolute inset-0 bg-gradient-to-b from-kiqao-black/80 via-kiqao-black/60 to-kiqao-black/90"></div>
