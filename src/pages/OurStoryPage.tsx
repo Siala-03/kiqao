@@ -79,7 +79,7 @@ export function OurStoryPage() {
                 <span className="text-kiqao-gold text-sm font-bold tracking-[0.2em] uppercase">
                   Who We Are
                 </span>
-                <h2 className="font-display text-4xl md:text-5xl text-kiqao-warm-white mt-4 mb-6">
+                <h2 className="font-display text-3xl md:text-4xl text-kiqao-warm-white mt-4 mb-6">
                   A Legacy of Culinary Excellence
                 </h2>
                 <div className="w-16 h-0.5 bg-kiqao-gold mb-8"></div>

@@ -112,7 +112,7 @@ export function ContactPage() {
               }}
               className="bg-kiqao-rich-black border border-kiqao-charcoal p-8 md:p-10 rounded-sm">
               
-              <h2 className="font-display text-3xl text-kiqao-warm-white mb-8">
+              <h2 className="font-display text-3xl md:text-4xl text-kiqao-warm-white mb-8">
                 Send a Message
               </h2>
 
@@ -223,7 +223,7 @@ export function ContactPage() {
               className="space-y-10">
               
               <div>
-                <h2 className="font-display text-3xl text-kiqao-warm-white mb-8">
+                <h2 className="font-display text-3xl md:text-4xl text-kiqao-warm-white mb-8">
                   Contact Information
                 </h2>
                 <div className="space-y-6">
@@ -308,7 +308,7 @@ export function ContactPage() {
           {/* FAQ Section */}
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="font-display text-4xl text-kiqao-warm-white mb-4">
+              <h2 className="font-display text-3xl md:text-4xl text-kiqao-warm-white mb-4">
                 Frequently Asked Questions
               </h2>
               <div className="w-16 h-0.5 bg-kiqao-gold mx-auto"></div>

@@ -102,7 +102,7 @@ export function EventsPage() {
         {/* Upcoming Events */}
         <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-display text-4xl text-kiqao-warm-white mb-4">
+            <h2 className="font-display text-3xl md:text-4xl text-kiqao-warm-white mb-4">
               Upcoming Events
             </h2>
             <div className="w-16 h-0.5 bg-kiqao-gold mx-auto"></div>
@@ -181,7 +181,7 @@ export function EventsPage() {
         {/* Private Events CTA */}
         <section className="py-24 bg-kiqao-rich-black border-y border-kiqao-charcoal">
           <div className="max-w-4xl mx-auto px-4 text-center">
-            <h2 className="font-display text-4xl text-kiqao-warm-white mb-6">
+            <h2 className="font-display text-3xl md:text-4xl text-kiqao-warm-white mb-6">
               Host a Private Event
             </h2>
             <p className="text-kiqao-cream/80 text-lg mb-10 leading-relaxed font-light">
@@ -202,7 +202,7 @@ export function EventsPage() {
         {/* Past Events Gallery */}
         <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-display text-4xl text-kiqao-warm-white mb-4">
+            <h2 className="font-display text-3xl md:text-4xl text-kiqao-warm-white mb-4">
               Past Memories
             </h2>
             <div className="w-16 h-0.5 bg-kiqao-gold mx-auto"></div>
