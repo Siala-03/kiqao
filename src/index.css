@@ -61,3 +61,11 @@ h1, h2, h3, h4, h5, h6 {
   color: rgba(115, 115, 115, 0.8);
   -webkit-text-stroke: 1px rgba(115, 115, 115, 0.9);
 }
+/* Hide scrollbar on horizontally-scrollable strips (e.g. menu category tabs) */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

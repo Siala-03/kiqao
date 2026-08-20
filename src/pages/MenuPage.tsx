@@ -443,14 +443,14 @@ export function MenuPage() {
         </section>
 
         {/* Menu Content */}
-        <section className="py-8 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Category Tabs */}
-          <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-16 border-b border-kiqao-charcoal pb-6">
+          <div className="flex flex-nowrap items-center justify-start gap-5 md:gap-8 mb-16 border-b border-kiqao-charcoal pb-6 overflow-x-auto no-scrollbar">
             {categories.map((cat) =>
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`text-sm md:text-base tracking-widest uppercase transition-colors relative pb-2 ${activeCategory === cat ? 'text-kiqao-gold' : 'text-kiqao-cream/60 hover:text-kiqao-warm-white'}`}>
+              className={`flex-shrink-0 whitespace-nowrap text-sm md:text-base tracking-widest uppercase transition-colors relative pb-2 ${activeCategory === cat ? 'text-kiqao-gold' : 'text-kiqao-cream/60 hover:text-kiqao-warm-white'}`}>
 
                 {cat}
                 {activeCategory === cat &&
@@ -464,7 +464,7 @@ export function MenuPage() {
           </div>
 
           {/* Menu Items Grid */}
-          <div className="min-h-[500px]">
+          <div className="min-h-[500px] max-w-5xl mx-auto">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeCategory}
