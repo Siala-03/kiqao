@@ -1,171 +1,218 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MenuIcon, XIcon } from 'lucide-react';
+import {
+  MenuIcon,
+  XIcon,
+  ClockIcon,
+  ChevronUpIcon,
+  InstagramIcon,
+  FacebookIcon } from
+'lucide-react';
 import { RESERVATION_URL, ORDER_URL } from '../config/servv';
-const navLinks: {
-  name: string;
-  path?: string;
-  href?: string;
-}[] = [
-{
-  name: 'Home',
-  path: '/'
-},
-{
-  name: 'Menu',
-  path: '/menu'
-},
-{
-  name: 'Events',
-  path: '/events'
-},
-{
-  name: 'Reservations',
-  href: RESERVATION_URL
-},
-{
-  name: 'Order Online',
-  href: ORDER_URL
-},
-{
-  name: 'Contact',
-  path: '/contact'
-}];
+
+const primaryLinks = [
+{ name: 'Home', path: '/' },
+{ name: 'Menu', path: '/menu' },
+{ name: 'Reviews', path: '/reviews' },
+{ name: 'Events', path: '/events' },
+{ name: 'Live', path: '/live' },
+{ name: 'Contacts', path: '/contact' }];
+
+
+const secondaryLinks = [
+{ name: 'Our Story', path: '/our-story' },
+{ name: 'Gallery', path: '/gallery' },
+{ name: 'Careers', path: '/careers' },
+{ name: 'Order Online', href: ORDER_URL }];
+
 
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMoreOpen, setIsMoreOpen] = useState(false);
+  const [isHoursOpen, setIsHoursOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-  // Close mobile menu on route change
-  useEffect(() => {
-    setIsMobileMenuOpen(false);
-  }, [location.pathname]);
+
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${isScrolled ? 'bg-kiqao-rich-black/95 backdrop-blur-md py-4 shadow-lg' : 'bg-transparent py-6'}`}>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="flex items-center group">
-            <img
-              src="/kiqao-logo.webp"
-              alt="Kiqao Lounge"
-              className="h-12 w-auto rounded-sm" />
+    <>
+      {/* Fixed top bar: logo + socials */}
+      <div className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-6 py-5">
+        <Link to="/" className="flex items-center">
+          <img
+            src="/kiqao-logo.webp"
+            alt="Kiqao Lounge"
+            className="h-10 w-auto rounded-sm" />
 
-          </Link>
+        </Link>
+        <div className="hidden sm:flex items-center space-x-4">
+          <a
+            href="https://www.instagram.com/kiqaolounge.rw/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-kiqao-cream/80 hover:text-kiqao-warm-white transition-colors">
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) =>
-            link.href ?
-            <a
-              key={link.name}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm tracking-wide transition-colors hover:text-kiqao-gold text-kiqao-cream">
+            <InstagramIcon className="w-5 h-5" />
+          </a>
+          <a
+            href="https://www.facebook.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-kiqao-cream/80 hover:text-kiqao-warm-white transition-colors">
 
-                {link.name}
-              </a> :
+            <FacebookIcon className="w-5 h-5" />
+          </a>
+        </div>
+        {/* Mobile toggle */}
+        <button
+          className="sm:hidden text-kiqao-warm-white"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle menu">
 
-            <Link
-              key={link.name}
-              to={link.path!}
-              className={`text-sm tracking-wide transition-colors hover:text-kiqao-gold ${location.pathname === link.path ? 'text-kiqao-gold font-medium' : 'text-kiqao-cream'}`}>
+          {isMobileMenuOpen ? <XIcon className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
+        </button>
+      </div>
 
-                {link.name}
-              </Link>
-            )}
-            <a
-              href={RESERVATION_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-2.5 bg-kiqao-gold text-kiqao-black text-sm font-medium tracking-wide hover:bg-kiqao-champagne transition-colors rounded-sm">
+      {/* Floating bottom capsule nav (desktop) */}
+      <div className="hidden sm:flex fixed bottom-4 left-0 right-0 z-40 justify-center px-4">
+        <div className="flex items-center gap-1 bg-kiqao-rich-black/90 backdrop-blur-md border border-kiqao-charcoal rounded-full px-2 py-2 shadow-lg relative">
+          {primaryLinks.map((link) =>
+          <Link
+            key={link.name}
+            to={link.path}
+            className={`px-4 py-2 text-sm tracking-wide rounded-full transition-colors ${location.pathname === link.path ? 'bg-kiqao-charcoal text-kiqao-warm-white' : 'text-kiqao-cream/80 hover:text-kiqao-warm-white'}`}>
 
-              Book a Table
-            </a>
-          </nav>
+              {link.name}
+            </Link>
+          )}
 
-          {/* Mobile Menu Toggle */}
-          <button
-            className="md:hidden text-kiqao-cream hover:text-kiqao-gold transition-colors"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu">
-            
-            {isMobileMenuOpen ?
-            <XIcon className="w-6 h-6" /> :
+          {/* Hours */}
+          <div className="relative">
+            <button
+              onClick={() => {
+                setIsHoursOpen(!isHoursOpen);
+                setIsMoreOpen(false);
+              }}
+              aria-label="Opening hours"
+              className="p-2.5 rounded-full text-kiqao-cream/80 hover:text-kiqao-warm-white transition-colors">
 
-            <MenuIcon className="w-6 h-6" />
-            }
-          </button>
+              <ClockIcon className="w-4 h-4" />
+            </button>
+            <AnimatePresence>
+              {isHoursOpen &&
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                className="absolute bottom-full mb-3 left-1/2 -translate-x-1/2 w-56 bg-kiqao-rich-black border border-kiqao-charcoal rounded-lg p-4 text-left">
+
+                  <h3 className="font-display text-sm text-kiqao-warm-white mb-2">Opening Hours</h3>
+                  <p className="text-xs text-kiqao-cream/70">Mon - Sun</p>
+                  <p className="text-xs text-kiqao-cream/70">11:00 AM - Late</p>
+                </motion.div>
+              }
+            </AnimatePresence>
+          </div>
+
+          {/* More (secondary links) */}
+          <div className="relative">
+            <button
+              onClick={() => {
+                setIsMoreOpen(!isMoreOpen);
+                setIsHoursOpen(false);
+              }}
+              aria-label="More links"
+              className="p-2.5 rounded-full text-kiqao-cream/80 hover:text-kiqao-warm-white transition-colors">
+
+              {isMoreOpen ? <ChevronUpIcon className="w-4 h-4" /> : <MenuIcon className="w-4 h-4" />}
+            </button>
+            <AnimatePresence>
+              {isMoreOpen &&
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                className="absolute bottom-full mb-3 right-0 w-48 bg-kiqao-rich-black border border-kiqao-charcoal rounded-lg p-2 text-left">
+
+                  {secondaryLinks.map((link) =>
+                link.href ?
+                <a
+                  key={link.name}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block px-4 py-2.5 text-sm text-kiqao-cream/80 hover:text-kiqao-warm-white rounded-md hover:bg-kiqao-charcoal transition-colors">
+
+                        {link.name}
+                      </a> :
+
+                <Link
+                  key={link.name}
+                  to={link.path}
+                  className="block px-4 py-2.5 text-sm text-kiqao-cream/80 hover:text-kiqao-warm-white rounded-md hover:bg-kiqao-charcoal transition-colors">
+
+                        {link.name}
+                      </Link>
+
+                )}
+                </motion.div>
+              }
+            </AnimatePresence>
+          </div>
+
+          <a
+            href={RESERVATION_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-1 px-5 py-2 bg-kiqao-warm-white text-kiqao-black text-sm font-medium tracking-wide rounded-full hover:bg-kiqao-cream transition-colors uppercase">
+
+            Reservations
+          </a>
         </div>
       </div>
 
-      {/* Mobile Menu Drawer */}
+      {/* Mobile full-screen menu */}
       <AnimatePresence>
         {isMobileMenuOpen &&
         <motion.div
-          initial={{
-            opacity: 0,
-            height: 0
-          }}
-          animate={{
-            opacity: 1,
-            height: '100vh'
-          }}
-          exit={{
-            opacity: 0,
-            height: 0
-          }}
-          transition={{
-            duration: 0.3
-          }}
-          className="md:hidden absolute top-full left-0 right-0 bg-kiqao-rich-black border-t border-kiqao-charcoal overflow-hidden flex flex-col">
-          
-            <div className="flex flex-col px-6 py-8 space-y-6">
-              {navLinks.map((link) =>
-            link.href ?
-            <a
-              key={link.name}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-lg tracking-wide transition-colors text-kiqao-cream">
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="sm:hidden fixed inset-0 z-30 bg-kiqao-black/98 backdrop-blur-md flex flex-col items-center justify-center space-y-5 overflow-y-auto py-24">
+
+            {[...primaryLinks, ...secondaryLinks].map((link) =>
+          'href' in link && link.href ?
+          <a
+            key={link.name}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-2xl tracking-wide text-kiqao-cream/90"
+            onClick={() => setIsMobileMenuOpen(false)}>
 
                   {link.name}
                 </a> :
 
-            <Link
-              key={link.name}
-              to={link.path!}
-              className={`text-lg tracking-wide transition-colors ${location.pathname === link.path ? 'text-kiqao-gold' : 'text-kiqao-cream'}`}>
+          <Link
+            key={link.name}
+            to={(link as { path: string }).path}
+            className={`text-2xl tracking-wide ${location.pathname === (link as { path: string }).path ? 'text-kiqao-warm-white' : 'text-kiqao-cream/90'}`}
+            onClick={() => setIsMobileMenuOpen(false)}>
 
                   {link.name}
                 </Link>
-            )}
-              <div className="pt-6 border-t border-kiqao-charcoal">
-                <a
-                href={RESERVATION_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full text-center px-6 py-3 bg-kiqao-gold text-kiqao-black font-medium tracking-wide hover:bg-kiqao-champagne transition-colors rounded-sm">
 
-                  Book a Table
-                </a>
-              </div>
-            </div>
+          )}
+            <a
+            href={RESERVATION_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 px-8 py-3 bg-kiqao-warm-white text-kiqao-black text-sm font-medium tracking-wide rounded-full uppercase">
+
+              Reservations
+            </a>
           </motion.div>
         }
       </AnimatePresence>
-    </header>);
+    </>);
 
 }

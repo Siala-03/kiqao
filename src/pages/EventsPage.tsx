@@ -168,7 +168,7 @@ export function EventsPage() {
                 href={RESERVATION_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-auto w-full py-3 border border-kiqao-gold text-kiqao-gold text-center uppercase tracking-wider text-sm font-medium hover:bg-kiqao-gold hover:text-kiqao-black transition-colors rounded-sm">
+                className="mt-auto w-full py-3 border border-kiqao-gold text-kiqao-gold text-center uppercase tracking-wider text-sm font-medium hover:bg-kiqao-gold hover:text-kiqao-black transition-colors rounded-full">
 
                   Reserve Spot
                 </a>
@@ -192,7 +192,7 @@ export function EventsPage() {
             </p>
             <Link
               to="/contact"
-              className="inline-block px-8 py-4 bg-kiqao-gold text-kiqao-black font-medium tracking-wider hover:bg-kiqao-champagne transition-colors rounded-sm">
+              className="inline-block px-8 py-4 bg-kiqao-gold text-kiqao-black font-medium tracking-wider hover:bg-kiqao-champagne transition-colors rounded-full">
               
               Inquire Now
             </Link>

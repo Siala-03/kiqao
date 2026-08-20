@@ -8,20 +8,21 @@ export default {
     extend: {
       colors: {
         kiqao: {
-          black: '#181e1e',
-          'rich-black': '#282e2e',
-          charcoal: '#383e3e',
-          gold: '#c9a0a0',
-          champagne: '#d9b4b0',
+          black: '#050505',
+          'rich-black': '#0d0d0d',
+          charcoal: '#1a1a1a',
+          gold: '#b34215',
+          champagne: '#d97a4a',
           burgundy: '#6a1010',
           merlot: '#4a0d0d',
-          cream: '#f2ead6',
-          'warm-white': '#fff7e2',
+          cream: '#e8e8e8',
+          'warm-white': '#ffffff',
         },
       },
       fontFamily: {
-        display: ['Playfair Display', 'serif'],
-        body: ['Inter', 'sans-serif'],
+        display: ['Chillax', 'sans-serif'],
+        body: ['Chillax', 'sans-serif'],
+        hero: ['American Typewriter', 'Courier New', 'Courier', 'monospace'],
       },
       animation: {
         'fade-in': 'fadeIn 0.8s ease-out forwards',

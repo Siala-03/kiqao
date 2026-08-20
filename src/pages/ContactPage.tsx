@@ -202,7 +202,7 @@ export function ContactPage() {
                   <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 bg-kiqao-gold text-kiqao-black font-medium tracking-wider hover:bg-kiqao-champagne transition-colors rounded-sm uppercase disabled:opacity-70 flex justify-center">
+                  className="w-full py-4 bg-kiqao-gold text-kiqao-black font-medium tracking-wider hover:bg-kiqao-champagne transition-colors rounded-full uppercase disabled:opacity-70 flex justify-center">
                   
                     {isSubmitting ? 'Sending...' : 'Send Message'}
                   </button>
@@ -297,7 +297,7 @@ export function ContactPage() {
                 href={`https://wa.me/${WHATSAPP_NUMBER}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-full py-4 bg-[#25D366] text-white font-medium tracking-wider hover:bg-[#128C7E] transition-colors rounded-sm uppercase">
+                className="flex items-center justify-center w-full py-4 bg-[#25D366] text-white font-medium tracking-wider hover:bg-[#128C7E] transition-colors rounded-full uppercase">
 
                 <WhatsAppIcon className="w-5 h-5 mr-2" />
                 Chat on WhatsApp

@@ -10,7 +10,7 @@ import { PHONE_DISPLAY, EMAIL } from '../config/contact';
 import { RESERVATION_URL, ORDER_URL } from '../config/servv';
 export function Footer() {
   return (
-    <footer className="bg-kiqao-black border-t border-kiqao-gold/20 pt-20 pb-10">
+    <footer className="bg-kiqao-black border-t border-kiqao-charcoal pt-20 pb-28 sm:pb-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand Column */}
@@ -56,12 +56,32 @@ export function Footer() {
             <ul className="space-y-4">
               {[
               {
+                name: 'Our Story',
+                path: '/our-story'
+              },
+              {
                 name: 'Menu',
                 path: '/menu'
               },
               {
+                name: 'Reviews',
+                path: '/reviews'
+              },
+              {
                 name: 'Events',
                 path: '/events'
+              },
+              {
+                name: 'Gallery',
+                path: '/gallery'
+              },
+              {
+                name: 'Live',
+                path: '/live'
+              },
+              {
+                name: 'Careers',
+                path: '/careers'
               },
               {
                 name: 'Reservations',

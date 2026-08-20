@@ -1,5 +1,5 @@
 /* @import url() FONT IMPORTS MUST ALWAYS BE AT THE VERY TOP OF THIS FILE, ABOVE THE TAILWIND IMPORTS — DO NOT DELETE THIS COMMENT */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=chillax@400,500,600,700&display=swap');
 
 /* CRITICAL: THE FOLLOWING TAILWIND IMPORTS MUST NEVER BE DELETED OR REORDERED — DO NOT DELETE THIS COMMENT */
 @import 'tailwindcss/base';
@@ -9,15 +9,15 @@
 /* END TAILWIND IMPORTS — ALL OTHER CSS MUST GO BELOW THIS LINE */
 
 :root {
-  --color-black: #181e1e;
-  --color-rich-black: #282e2e;
-  --color-charcoal: #383e3e;
-  --color-gold: #c9a0a0;
-  --color-champagne: #d9b4b0;
+  --color-black: #050505;
+  --color-rich-black: #0d0d0d;
+  --color-charcoal: #1a1a1a;
+  --color-gold: #b34215;
+  --color-champagne: #d97a4a;
   --color-burgundy: #6a1010;
   --color-merlot: #4a0d0d;
-  --color-cream: #f2ead6;
-  --color-warm-white: #fff7e2;
+  --color-cream: #e8e8e8;
+  --color-warm-white: #ffffff;
 }
 * {
   margin: 0;
@@ -28,31 +28,36 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  font-family: 'Inter', sans-serif;
-  background-color: #181e1e;
-  color: #f2ead6;
+  font-family: 'Chillax', sans-serif;
+  background-color: #050505;
+  color: #e8e8e8;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Chillax', sans-serif;
 }
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #181e1e;
+  background: #050505;
 }
 ::-webkit-scrollbar-thumb {
-  background: #c9a0a0;
+  background: #b34215;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #d9b4b0;
+  background: #d97a4a;
 }
 /* Selection color */
 ::selection {
-  background-color: rgba(201, 160, 160, 0.3);
-  color: #fff7e2;
+  background-color: rgba(179, 66, 21, 0.3);
+  color: #ffffff;
+}
+/* Ghost-outline hero heading, matching the Ankole-style slide labels */
+.text-outline {
+  color: rgba(115, 115, 115, 0.8);
+  -webkit-text-stroke: 1px rgba(115, 115, 115, 0.9);
 }

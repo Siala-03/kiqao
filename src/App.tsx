@@ -11,6 +11,11 @@ import { HomePage } from './pages/HomePage';
 import { MenuPage } from './pages/MenuPage';
 import { EventsPage } from './pages/EventsPage';
 import { ContactPage } from './pages/ContactPage';
+import { OurStoryPage } from './pages/OurStoryPage';
+import { ReviewsPage } from './pages/ReviewsPage';
+import { GalleryPage } from './pages/GalleryPage';
+import { CareersPage } from './pages/CareersPage';
+import { LivePage } from './pages/LivePage';
 export function App() {
   return (
     <BrowserRouter>
@@ -22,8 +27,13 @@ export function App() {
         <AnimatePresence mode="wait">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/our-story" element={<OurStoryPage />} />
             <Route path="/menu" element={<MenuPage />} />
+            <Route path="/reviews" element={<ReviewsPage />} />
             <Route path="/events" element={<EventsPage />} />
+            <Route path="/gallery" element={<GalleryPage />} />
+            <Route path="/live" element={<LivePage />} />
+            <Route path="/careers" element={<CareersPage />} />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </AnimatePresence>
