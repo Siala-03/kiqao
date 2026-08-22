@@ -268,7 +268,7 @@ export function MenuPage() {
         {/* Menu Content */}
         <section className="py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Category Tabs */}
-          <div className="flex flex-nowrap items-center justify-start gap-5 md:gap-8 mb-16 border-b border-kiqao-charcoal pb-6 overflow-x-auto no-scrollbar">
+          <div className="flex flex-nowrap items-center justify-start sm:justify-center gap-5 md:gap-8 mb-16 border-b border-kiqao-charcoal pb-6 overflow-x-auto no-scrollbar">
             {categories.map((cat) =>
             <button
               key={cat}
