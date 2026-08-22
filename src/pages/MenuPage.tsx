@@ -2,330 +2,153 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PageTransition } from '../components/PageTransition';
 import { usePageTitle } from '../hooks/usePageTitle';
-type MenuCategory =
-'Breakfast' |
-'Starters & Burgers' |
-'Main Course' |
-'Pasta, Pizza & Salads' |
-'Desserts & Sides' |
-'Coffee, Juice & Mocktails' |
-'Cocktails, Wine & Bar';
-const menuData: Record<MenuCategory, {
+type MenuCategory = 'Breakfast' | 'Food' | 'Sides & Sauces' | 'Drinks';
+type MenuItem = {
   name: string;
   desc?: string;
   price: string;
-}[]> = {
+};
+type MenuSection = {
+  title: string;
+  items: MenuItem[];
+};
+const menuData: Record<MenuCategory, MenuSection[]> = {
   Breakfast: [
   {
-    name: 'Kiqao Signature Breakfast',
-    price: 'RWF 13,000'
+    title: 'Coffee & Tea',
+    items: [
+    { name: 'Cappuccino', price: 'RWF 4,000' },
+    { name: 'Café Latte', price: 'RWF 4,000' },
+    { name: 'Mocha', price: 'RWF 4,000' },
+    { name: 'Macchiato', price: 'RWF 3,000' },
+    { name: 'Espresso', price: 'RWF 3,000' },
+    { name: 'Spiced Tea / African Tea / Herbal Tea', price: 'RWF 4,000' }]
+
   },
   {
-    name: 'Omelette',
-    desc: 'Spanish, Denver, Fajita, Spinach & Mushroom',
-    price: 'RWF 7,000'
-  },
-  {
-    name: 'Stuffed Crepes with Chocolate',
-    price: 'RWF 9,000'
-  },
-  {
-    name: 'Coconut Cream / Buttermilk Pancake',
-    price: 'RWF 8,000'
-  },
-  {
-    name: 'Chicken Salad Croissant',
-    price: 'RWF 10,000'
-  },
-  {
-    name: 'Chicken Wrap / Beef Wrap',
-    price: 'RWF 11,000'
-  },
-  {
-    name: 'Seasonal Fruit Plate',
-    price: 'RWF 7,500'
+    title: 'Breakfast Dishes',
+    items: [
+    { name: 'Kiqao Signature Breakfast', price: 'RWF 13,000' },
+    { name: 'Omelette', desc: 'Spanish, Denver, Fajita, Spinach & Mushroom', price: 'RWF 7,000' },
+    { name: 'Stuffed Crepes with Chocolate', price: 'RWF 9,000' },
+    { name: 'Coconut Cream / Buttermilk Pancake', price: 'RWF 8,000' },
+    { name: 'Chicken Salad Croissant', price: 'RWF 10,000' },
+    { name: 'Chicken Wrap / Beef Wrap', price: 'RWF 11,000' },
+    { name: 'Seasonal Fruit Plate', price: 'RWF 7,500' },
+    { name: 'Cinnamon French Toast with Whipping Cream', price: 'RWF 9,000' }]
+
   }],
 
-  'Starters & Burgers': [
+  Food: [
   {
-    name: 'Chili Garlic Chicken Wings',
-    price: 'RWF 8,000'
+    title: 'Starters & Small Plates',
+    items: [
+    { name: 'Chili Garlic Chicken Wings', price: 'RWF 8,000' },
+    { name: 'Alfredo Chicken Wings', price: 'RWF 10,000' },
+    { name: 'Garlic Bread with Cheese', price: 'RWF 3,500' },
+    { name: 'Golden Fried Mozzarella Sticks', price: 'RWF 5,000' },
+    { name: 'The Meatball Masterpiece', price: 'RWF 12,000' }]
+
   },
   {
-    name: 'Garlic Bread with Cheese',
-    price: 'RWF 3,500'
+    title: 'Salads',
+    items: [
+    { name: 'Cowboy Caviar Salad', price: 'RWF 13,000' },
+    { name: 'Mango Lime Peanut & Chicken Salad', price: 'RWF 12,000' },
+    { name: 'Greek Salad', price: 'RWF 10,000' },
+    { name: 'Chicken Caesar Salad', price: 'RWF 12,000' }]
+
   },
   {
-    name: 'Golden Fried Mozzarella Sticks',
-    price: 'RWF 5,000'
+    title: 'Sandwiches & Burgers',
+    items: [
+    { name: 'Kiqao Signature Club Sandwich', price: 'RWF 12,500' },
+    { name: 'Double Cheese Jalapeno Burger', price: 'RWF 11,000' },
+    { name: 'Veggie Burger', price: 'RWF 7,500' }]
+
   },
   {
-    name: 'Double Cheese Jalapeno Burger',
-    price: 'RWF 11,000'
+    title: 'Pasta & Pizza',
+    items: [
+    { name: 'Penne Alforno', price: 'RWF 13,000' },
+    { name: 'Kiqao Signature Chicken Pasta', price: 'RWF 12,000' },
+    { name: 'Mushroom Tagliatelle', price: 'RWF 12,000' },
+    { name: 'Ginovesse Pasta', price: 'RWF 12,000' },
+    { name: 'Tuscan Chicken Pasta', price: 'RWF 12,000' },
+    { name: 'Margarita Pizza', price: 'RWF 8,000' },
+    { name: 'Spicy Pepperoni Pizza', price: 'RWF 12,000' },
+    { name: 'Rainbow Vegetable Pizza', price: 'RWF 9,000' },
+    { name: 'Bolognaise Pizza', price: 'RWF 12,000' },
+    { name: 'Chicken Hawaiian Pizza', price: 'RWF 12,000' },
+    { name: 'Chicken BBQ Pizza', price: 'RWF 12,000' },
+    { name: 'Ham and Mushroom Pizza', price: 'RWF 12,000' },
+    { name: 'Tuna and Mushroom Pizza', price: 'RWF 11,000' },
+    { name: 'Nyama Feast Pizza', price: 'RWF 13,000' },
+    { name: 'Mushroom and Olive Loaded Pizza', price: 'RWF 10,000' }]
+
   },
   {
-    name: 'The Meatball Masterpiece',
-    price: 'RWF 12,000'
+    title: 'From The Grill',
+    items: [
+    { name: 'Fish Fillet with Creamy Creole Sauce', price: 'RWF 18,000' },
+    { name: 'Pan Seared Tilapia', price: 'RWF 15,000' },
+    { name: 'Creamy Chicken Marsala', price: 'RWF 18,000' },
+    { name: 'Pinwheels Steak with Mozzarella', price: 'RWF 18,000' },
+    { name: 'Grilled Sirloin Steak', price: 'RWF 20,000' },
+    { name: 'Lip Smacking Beef Parmigiana', price: 'RWF 20,000' },
+    { name: 'T-Bone Steak with Chimi Churi Sauce', price: 'RWF 20,000' },
+    { name: 'Huntsman Platter', price: 'RWF 25,000' }]
+
   },
   {
-    name: 'Kiqao Signature Club Sandwich',
-    price: 'RWF 12,500'
-  },
-  {
-    name: 'Veggie Burger',
-    price: 'RWF 7,500'
+    title: 'Desserts',
+    items: [
+    { name: 'Tropical Fruit Salad with Yoghurt & Nuts', price: 'RWF 7,500' }]
+
   }],
 
-  'Main Course': [
+  'Sides & Sauces': [
   {
-    name: 'Fish Fillet with Creamy Creole Sauce',
-    price: 'RWF 18,000'
-  },
-  {
-    name: 'Pan Seared Tilapia',
-    price: 'RWF 15,000'
-  },
-  {
-    name: 'Creamy Chicken Marsala',
-    price: 'RWF 18,000'
-  },
-  {
-    name: 'Pinwheels Steak with Mozzarella',
-    price: 'RWF 18,000'
-  },
-  {
-    name: 'Alfredo Chicken Wings',
-    price: 'RWF 10,000'
-  },
-  {
-    name: 'Grilled Sirloin Steak',
-    price: 'RWF 20,000'
-  },
-  {
-    name: 'Lip Smacking Beef Parmigiana',
-    price: 'RWF 20,000'
-  },
-  {
-    name: 'T-Bone Steak with Chimi Churi Sauce',
-    price: 'RWF 20,000'
-  },
-  {
-    name: 'Huntsman Platter',
-    price: 'RWF 25,000'
+    title: 'Sides',
+    items: [
+    { name: 'Potatoes', desc: 'Mashed, Fries, Chunky Chips, Sautee, Wedges', price: 'RWF 4,000' },
+    { name: 'Plantain', price: 'RWF 4,000' },
+    { name: 'Rice', price: 'RWF 3,500' },
+    { name: 'Loaded Fries', price: 'RWF 8,000' },
+    { name: 'Pickled Vegetable', price: 'RWF 3,500' },
+    { name: 'Onion Rings', price: 'RWF 3,500' },
+    { name: 'Creamed Spinach', price: 'RWF 3,500' }]
+
   }],
 
-  'Pasta, Pizza & Salads': [
+  Drinks: [
   {
-    name: 'Penne Alforno',
-    price: 'RWF 13,000'
-  },
-  {
-    name: 'Kiqao Signature Chicken Pasta',
-    price: 'RWF 12,000'
-  },
-  {
-    name: 'Mushroom Tagliatelle',
-    price: 'RWF 12,000'
-  },
-  {
-    name: 'Ginovesse Pasta',
-    price: 'RWF 12,000'
-  },
-  {
-    name: 'Tuscan Chicken Pasta',
-    price: 'RWF 12,000'
-  },
-  {
-    name: 'Margarita Pizza',
-    price: 'RWF 8,000'
-  },
-  {
-    name: 'Spicy Pepperoni Pizza',
-    price: 'RWF 12,000'
-  },
-  {
-    name: 'Rainbow Vegetable Pizza',
-    price: 'RWF 9,000'
-  },
-  {
-    name: 'Bolognaise Pizza',
-    price: 'RWF 12,000'
-  },
-  {
-    name: 'Chicken Hawaiian Pizza',
-    price: 'RWF 12,000'
-  },
-  {
-    name: 'Chicken BBQ Pizza',
-    price: 'RWF 12,000'
-  },
-  {
-    name: 'Ham and Mushroom Pizza',
-    price: 'RWF 12,000'
-  },
-  {
-    name: 'Tuna and Mushroom Pizza',
-    price: 'RWF 11,000'
-  },
-  {
-    name: 'Nyama Feast Pizza',
-    price: 'RWF 13,000'
-  },
-  {
-    name: 'Mushroom and Olive Loaded Pizza',
-    price: 'RWF 10,000'
-  },
-  {
-    name: 'Cowboy Caviar Salad',
-    price: 'RWF 13,000'
-  },
-  {
-    name: 'Mango Lime Peanut & Chicken Salad',
-    price: 'RWF 12,000'
-  },
-  {
-    name: 'Greek Salad',
-    price: 'RWF 10,000'
-  },
-  {
-    name: 'Chicken Caesar Salad',
-    price: 'RWF 12,000'
-  }],
+    title: 'Fresh Juices, Smoothies & Mocktails',
+    items: [
+    { name: 'Fresh Juices', desc: 'Mango, Passion, Pineapple, Watermelon', price: 'RWF 5,000' },
+    { name: 'Cocktail Juice', price: 'RWF 6,000' },
+    { name: 'Smoothies', price: 'RWF 6,000' },
+    { name: 'Mocktails', price: 'RWF 10,000' }]
 
-  'Desserts & Sides': [
-  {
-    name: 'Tropical Fruit Salad with Yoghurt & Nuts',
-    price: 'RWF 7,500'
   },
   {
-    name: 'Cinnamon French Toast with Whipping Cream',
-    price: 'RWF 9,000'
-  },
-  {
-    name: 'Potatoes',
-    desc: 'Mashed, Fries, Chunky Chips, Sautee, Wedges',
-    price: 'RWF 4,000'
-  },
-  {
-    name: 'Plantain',
-    price: 'RWF 4,000'
-  },
-  {
-    name: 'Rice',
-    price: 'RWF 3,500'
-  },
-  {
-    name: 'Loaded Fries',
-    price: 'RWF 8,000'
-  },
-  {
-    name: 'Pickled Vegetable',
-    price: 'RWF 3,500'
-  },
-  {
-    name: 'Onion Rings',
-    price: 'RWF 3,500'
-  },
-  {
-    name: 'Creamed Spinach',
-    price: 'RWF 3,500'
-  }],
+    title: 'Wine, Cocktails & Bar',
+    items: [
+    { name: 'Signature Cocktails', price: 'from RWF 15,000' },
+    { name: 'Long Island / Old Fashion / Amalfi Collins', price: 'RWF 18,000' },
+    { name: 'Red Wine by the Glass', price: 'from RWF 12,000' },
+    { name: 'White Wine by the Glass', price: 'from RWF 12,000' },
+    { name: 'Sparkling Wine by the Glass', price: 'from RWF 15,000' },
+    { name: 'Champagne Bottles', price: 'from RWF 250,000' },
+    { name: 'Vodka, Gin, Tequila, Whisky, Rum & Cognac', desc: 'Available by shot and bottle', price: '' },
+    { name: 'Sodas & Water', price: 'from RWF 2,000' },
+    { name: 'Local Beer', price: 'RWF 3,000' },
+    { name: 'Premium Beer & Energy Drinks', price: 'from RWF 4,000' }]
 
-  'Coffee, Juice & Mocktails': [
-  {
-    name: 'Cappuccino',
-    price: 'RWF 4,000'
-  },
-  {
-    name: 'Café Latte',
-    price: 'RWF 4,000'
-  },
-  {
-    name: 'Mocha',
-    price: 'RWF 4,000'
-  },
-  {
-    name: 'Macchiato',
-    price: 'RWF 3,000'
-  },
-  {
-    name: 'Espresso',
-    price: 'RWF 3,000'
-  },
-  {
-    name: 'Spiced Tea / African Tea / Herbal Tea',
-    price: 'RWF 4,000'
-  },
-  {
-    name: 'Fresh Juices',
-    desc: 'Mango, Passion, Pineapple, Watermelon',
-    price: 'RWF 5,000'
-  },
-  {
-    name: 'Cocktail Juice',
-    price: 'RWF 6,000'
-  },
-  {
-    name: 'Smoothies',
-    price: 'RWF 6,000'
-  },
-  {
-    name: 'Mocktails',
-    price: 'RWF 10,000'
-  }],
-
-  'Cocktails, Wine & Bar': [
-  {
-    name: 'Signature Cocktails',
-    price: 'from RWF 15,000'
-  },
-  {
-    name: 'Long Island / Old Fashion / Amalfi Collins',
-    price: 'RWF 18,000'
-  },
-  {
-    name: 'Red Wine by the Glass',
-    price: 'from RWF 12,000'
-  },
-  {
-    name: 'White Wine by the Glass',
-    price: 'from RWF 12,000'
-  },
-  {
-    name: 'Sparkling Wine by the Glass',
-    price: 'from RWF 15,000'
-  },
-  {
-    name: 'Champagne Bottles',
-    price: 'from RWF 250,000'
-  },
-  {
-    name: 'Vodka, Gin, Tequila, Whisky, Rum & Cognac',
-    desc: 'Available by shot and bottle',
-    price: ''
-  },
-  {
-    name: 'Sodas & Water',
-    price: 'from RWF 2,000'
-  },
-  {
-    name: 'Local Beer',
-    price: 'RWF 3,000'
-  },
-  {
-    name: 'Premium Beer & Energy Drinks',
-    price: 'from RWF 4,000'
   }]
 
 };
-const categories: MenuCategory[] = [
-'Breakfast',
-'Starters & Burgers',
-'Main Course',
-'Pasta, Pizza & Salads',
-'Desserts & Sides',
-'Coffee, Juice & Mocktails',
-'Cocktails, Wine & Bar'];
+const categories: MenuCategory[] = ['Breakfast', 'Food', 'Sides & Sauces', 'Drinks'];
 
 export function MenuPage() {
   usePageTitle('Menu | Kiqao Lounge');
@@ -463,7 +286,7 @@ export function MenuPage() {
             )}
           </div>
 
-          {/* Menu Items Grid */}
+          {/* Menu Items */}
           <div className="min-h-[500px] max-w-5xl mx-auto">
             <AnimatePresence mode="wait">
               <motion.div
@@ -483,24 +306,33 @@ export function MenuPage() {
                 transition={{
                   duration: 0.4
                 }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+                className="space-y-16">
 
-                {menuData[activeCategory].map((item, idx) =>
-                <div key={idx} className="flex flex-col">
-                    <div className="flex justify-between items-baseline mb-2">
-                      <h3 className="font-display text-xl text-kiqao-warm-white">
-                        {item.name}
-                      </h3>
-                      <div className="flex-grow border-b border-dotted border-kiqao-charcoal mx-4 relative top-[-6px]"></div>
-                      <span className="font-display text-xl text-kiqao-gold whitespace-nowrap">
-                        {item.price}
-                      </span>
+                {menuData[activeCategory].map((section) =>
+                <div key={section.title}>
+                    <h3 className="text-kiqao-gold text-sm font-bold tracking-[0.2em] uppercase mb-8">
+                      {section.title}
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
+                      {section.items.map((item, idx) =>
+                    <div key={idx} className="flex flex-col">
+                          <div className="flex justify-between items-baseline mb-2">
+                            <h4 className="font-display text-xl text-kiqao-warm-white">
+                              {item.name}
+                            </h4>
+                            <div className="flex-grow border-b border-dotted border-kiqao-charcoal mx-4 relative top-[-6px]"></div>
+                            <span className="font-display text-xl text-kiqao-gold whitespace-nowrap">
+                              {item.price}
+                            </span>
+                          </div>
+                          {item.desc &&
+                      <p className="text-kiqao-cream/60 text-sm font-light leading-relaxed">
+                              {item.desc}
+                            </p>
+                      }
+                        </div>
+                    )}
                     </div>
-                    {item.desc &&
-                  <p className="text-kiqao-cream/60 text-sm font-light leading-relaxed">
-                        {item.desc}
-                      </p>
-                  }
                   </div>
                 )}
               </motion.div>
