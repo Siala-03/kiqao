@@ -273,7 +273,7 @@ export function MenuPage() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`flex-shrink-0 whitespace-nowrap text-sm md:text-base tracking-widest uppercase transition-colors relative pb-2 ${activeCategory === cat ? 'text-kiqao-gold' : 'text-kiqao-cream/60 hover:text-kiqao-warm-white'}`}>
+              className={`flex-shrink-0 whitespace-nowrap font-display text-sm tracking-wide uppercase transition-colors relative pb-2 ${activeCategory === cat ? 'text-kiqao-gold' : 'text-kiqao-cream/60 hover:text-kiqao-warm-white'}`}>
 
                 {cat}
                 {activeCategory === cat &&
@@ -310,18 +310,18 @@ export function MenuPage() {
 
                 {menuData[activeCategory].map((section) =>
                 <div key={section.title}>
-                    <h3 className="text-kiqao-gold text-sm font-bold tracking-[0.2em] uppercase mb-8">
+                    <h3 className="text-kiqao-gold font-display text-lg tracking-wide uppercase mb-6">
                       {section.title}
                     </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
                       {section.items.map((item, idx) =>
                     <div key={idx} className="flex flex-col">
-                          <div className="flex justify-between items-baseline mb-2">
-                            <h4 className="font-display text-xl text-kiqao-warm-white">
+                          <div className="flex justify-between items-baseline mb-1">
+                            <h4 className="font-display text-base text-kiqao-warm-white">
                               {item.name}
                             </h4>
                             <div className="flex-grow border-b border-dotted border-kiqao-charcoal mx-4 relative top-[-6px]"></div>
-                            <span className="font-display text-xl text-kiqao-gold whitespace-nowrap">
+                            <span className="font-display text-sm text-kiqao-gold whitespace-nowrap">
                               {item.price}
                             </span>
                           </div>
